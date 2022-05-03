@@ -76,8 +76,13 @@ public class LoginController extends HttpServlet {
 			
 			//1.포워딩 방식 응답 뷰 출력하기
 			//RequestDispatcher view = request.getRequestDispatcher("응답페이지");
-			RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-			view.forward(request, response);
+//			RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+//			view.forward(request, response);
+			
+			//2. url 재요청 방식(sendRedirect)
+			//localhost:8889/JSP
+//			response.sendRedirect("/JSP");
+			response.sendRedirect(request.getContextPath());
 			
 			
 		

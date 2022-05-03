@@ -21,4 +21,23 @@ public class MemberService {
 		
 	}
 
+	
+	//회원가입 서비스
+	public int insertMember(Member m) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new MemberDao().insertMember(conn,m);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+			
+		}
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
 }
