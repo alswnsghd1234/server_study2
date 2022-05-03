@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <h1 align="center">본격 게시판</h1>
+    <div class="login-area">
+        <!-- 로그인 전에 보여지는 로그인 form-->
+        <form action="">
+            <table>
+                <tr>
+                    <th>아이디</th>
+                    <td><input type="text" name="userId" required></td>
+                </tr>
+                <tr>
+                    <th>비밀번호</th>
+                    <td><input type="text" name="userPwd" required></td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <button type="submit">로그인</button>
+                        <button type="button">회원가입</button>
+                    </th>
+                </tr>
+            </table>
+        </form>
+
+
+
+    </div>
+</body>
+</html>
