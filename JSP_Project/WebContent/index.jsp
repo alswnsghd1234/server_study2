@@ -19,8 +19,7 @@
 		일반게시판
 		사진게시판 
 		-->
-		<h1>본격 프로젝트 진심모드</h1>
-		
+		<br><br>
 		<%@ include file="views/common/menubar.jsp" %>
 		
 </body>

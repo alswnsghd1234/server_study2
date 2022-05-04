@@ -19,6 +19,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
 <style>
     .nav-area{background-color: blanchedalmond;}
     .menu{
@@ -38,6 +50,12 @@
     }
     .menu a:hover{
         background-color: darksalmon;
+    }
+    .login-area{
+        margin-right: 10px;
+    }
+    #login-form,#user-info{
+        float: right;
     }
 
 </style>
@@ -62,7 +80,7 @@
     <div class="login-area">
     <%if(loginUser==null) {%>
         <!--로그인 전에 보여지는 로그인 form-->
-        <form action="<%=contextPath%>/login.me" method="post">
+        <form action="<%=contextPath%>/login.me" method="post" id="login-form">
             <table>
                 <tr>
                     <th>아이디</th>
@@ -103,7 +121,7 @@
         <!-- 로그인 성공 후 보여질 영역 -->
         	<div id="user-info">
         		<b><%=loginUser.getUserName()%></b>님 환영합니다  <br><br>
-        		<a href="#">마이페이지</a>
+        		<a href="<%=contextPath%>/myPage.me">마이페이지</a>
         		<a href="<%=contextPath%>/logout.me">로그아웃</a>
         		
         	</div>	
