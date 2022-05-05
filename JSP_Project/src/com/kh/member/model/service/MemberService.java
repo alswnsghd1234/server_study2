@@ -60,4 +60,29 @@ public class MemberService {
 		return updateMem;
 	}
 
+	// 비밀번호 변경 메소드
+	public Member updatePwdMember(String userId, String userPwd, String updatePwd) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new MemberDao().updatePwdMember(conn,userId,userPwd,updatePwd);
+		Member updateMem = null;
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+			
+			//갱신된 회원정보 조회해오기
+			new MemberDao().selectMember(conn, userId);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+		return updateMem;
+		
+		
+		
+		
+	}
+
 }

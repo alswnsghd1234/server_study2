@@ -5,7 +5,6 @@ INDEX VERSION 1.4+C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.ecli
 1711748817.index
 1261652606.index
 203761796.index
-3728457815.index
+1261652606.index
 218607648.index
 1102967583.index
-3728457815.index

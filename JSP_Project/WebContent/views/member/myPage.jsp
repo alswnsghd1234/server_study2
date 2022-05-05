@@ -84,30 +84,83 @@
 
         <script>
             $(function(){
-            //interest = "음악,영화" / ""
-            var interest = "<%=interest%>";
-            console.log(interest);
+                //interest = "음악,영화" 또는  ""
+                var interest = "<%=interest%>";
 
-            //문자열.search(비교값) : 문자열에서 비교값과 일치하는 값의 시작인덱스 값을 반환 (0부터 시작) 없으면 -1 반환
+            // 문자열.search(비교값) : 문자열에서 비교값과 일치하는 값의 시작인덱스 값을 반환 (0부터시작) 없으면 -1 반환
             $("input[type=checkbox]").each(function(){
+                
                 //순차적으로 접근한 input:chk 요소에 value값이 interest안에 포함되어 있는지 확인
-                if(interest.search($(this).val())!=-1){ //interest 문자열안에 체크박스 밸류가 포함되어있지 않으면 -1을 반환
-                $(this).attr("checked",true);
+                // interest문자열안에 체크박스 value값이 포함되어있지 않으면 -1을 반환
+                if(interest.search($(this).val())!=-1){ 
+                    $(this).attr("checked",true);
                 }
-            
-                });
-            });
-
-
+        });
+    });
         </script>
 
         <div align="center">
-            <button type="submit">정보 변경</button>
-            <button type="button">비밀번호 변경</button>
+            <button type="submit" class="btn btn-success">정보 변경</button>
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updatePwdForm">비밀번호 변경</button>
             <button type="button" class="btn btn-danger">회원 탈퇴</button>
         </div>
 
     </form>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="updatePwdForm">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">비밀번호 변경</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        	<form action="<%=contextPath%>/updatePwd.me" method="post">
+                <!--현재 비밀번호, 변경할 비밀번호 , 비밀번호 확인-->
+                	<!-- 회원정보 식별할 회원 아이디도 데이터 보내야함 -->
+                	<!-- 굳이 보여줄 필요 없으니 숨겨서 값 넘기기(hidden) -->
+					<input type="hidden" name="userId" value="<%=userId%>">
+                <table>
+                    <tr>
+                        <td>현재 비밀번호</td>
+                        <td><input type="password" name="userPwd" required></td>
+                    </tr>
+                    <tr>
+                        <td>변경할 비밀번호</td>
+                        <td><input type="password" name="updatePwd" id="pwd1" required></td>
+                    </tr>
+                    <tr>
+                        <td>변경할 비밀번호 확인</td>
+                        <td><input type="password" name="checkPwd" id="pwd2" required></td>
+                    </tr>
+                </table>
+                <br>
+                <button type="submit" class="btn btn-dark" onclick="return validatePwd();">비밀번호 변경</button>
+            </form>
+
+            <script>
+                function validatePwd(){
+                   if($("input[name=updatePwd]").val()!=$("input[name=checkPwd]").val()){ //변경할 비밀번호와 비밀번호 확인 value값이 같지 않으면 전송하지마!!
+                    
+                        alert("비밀번호가 일치하지 않습니다.")
+
+                       return false;
+                   }
+
+                }
+            </script>
+
+
+
+      </div>
+    </div>
+  </div>
 </div>
 
 

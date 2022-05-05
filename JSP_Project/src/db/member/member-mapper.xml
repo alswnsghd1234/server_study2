@@ -48,5 +48,13 @@
 		WHERE USER_ID =?
 		AND STATUS='Y'
 	</entry>
+	
+	<entry key="updatePwdMember">
+		UPDATE MEMBER
+		SET USER_PWD = ? <!-- 변경될 비밀번호 -->
+    		,MODIFY_DATE = SYSDATE
+		WHERE USER_ID = ? <!-- 아이디 -->
+		AND USER_PWD = ? <!-- 현지 비밀번호 -->
+	</entry>
 
 </properties>
