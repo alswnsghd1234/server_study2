@@ -1,0 +1,14 @@
+package com.kh.board.model.service;
+
+import com.kh.common.JDBCTemplate.*;
+
+public class NoticeService {
+
+	
+	//공지사항 목록 조회 메소드
+	public void selectNoticeList() {
+		Connection conn = JDBCTemplate.getConnection();
+		
+	}
+
+}

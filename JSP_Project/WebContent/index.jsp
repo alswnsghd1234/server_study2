@@ -19,7 +19,9 @@
 		일반게시판
 		사진게시판 
 		-->
+		
 		<br><br>
+		
 		<%@ include file="views/common/menubar.jsp" %>
 		
 </body>

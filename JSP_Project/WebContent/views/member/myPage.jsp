@@ -24,6 +24,7 @@
 	<%
 		String userId = loginUser.getUserId();
 		String userName = loginUser.getUserName();
+		String userPwd = loginUser.getUserPwd();
 		//삼항연산자 = 조건 ? 참일때 실행할 구문 : 거짓일때 실행할 구문;
 		String phone = (loginUser.getPhone() == null) ? "":loginUser.getPhone();//삼항 연산자
 		String email = (loginUser.getEmail() == null) ? "":loginUser.getEmail();
@@ -102,7 +103,7 @@
         <div align="center">
             <button type="submit" class="btn btn-success">정보 변경</button>
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updatePwdForm">비밀번호 변경</button>
-            <button type="button" class="btn btn-danger">회원 탈퇴</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteForm">회원 탈퇴</button>
         </div>
 
     </form>
@@ -123,13 +124,13 @@
       <div class="modal-body">
         	<form action="<%=contextPath%>/updatePwd.me" method="post">
                 <!--현재 비밀번호, 변경할 비밀번호 , 비밀번호 확인-->
-                	<!-- 회원정보 식별할 회원 아이디도 데이터 보내야함 -->
-                	<!-- 굳이 보여줄 필요 없으니 숨겨서 값 넘기기(hidden) -->
+					<!-- 회원정보 식별할 회원 아이디도 데이터 보내야함 -->
+					<!-- 굳이 보여줄 필요 없으니 숨겨서 값 넘기기 (hidden) -->
 					<input type="hidden" name="userId" value="<%=userId%>">
                 <table>
                     <tr>
                         <td>현재 비밀번호</td>
-                        <td><input type="password" name="userPwd" required></td>
+                        <td><input type="password" name="userPwd" id="enterPwd" required></td>
                     </tr>
                     <tr>
                         <td>변경할 비밀번호</td>
@@ -145,15 +146,18 @@
             </form>
 
             <script>
+
                 function validatePwd(){
-                   if($("input[name=updatePwd]").val()!=$("input[name=checkPwd]").val()){ //변경할 비밀번호와 비밀번호 확인 value값이 같지 않으면 전송하지마!!
-                    
-                        alert("비밀번호가 일치하지 않습니다.")
 
-                       return false;
+                	
+                	
+                        if($("input[name=updatePwd]").val() != $("input[name=checkPwd]").val()){
+                            alert("변경할 비밀번호와 비밀번호 확인이 맞지 않습니다.");
+                            return false;
+                        }
+
                    }
-
-                }
+                
             </script>
 
 
@@ -162,6 +166,57 @@
     </div>
   </div>
 </div>
+
+
+		
+		<!-- controller : MemberDeleteController 
+			처리메소드명 : deleteMember 
+			성공시 = 회원탈퇴 성공 메세지 alert창으로 띄우기 
+			로그아웃 처리 해주기 페이지는 메인 페이지로 이동시키기.
+			
+			실패시 = 에러페이지로 보내서 에러 메세지 띄워주기
+			
+			sql문 = 매핑값 deleteMember 
+			delete문 XXX Update문으로 작업 STATUS컬럼 'Y' -> 'N' 
+						MODIFY 컬럼 SYSDATE로 작업
+						WHERE절에 USER_ID와 USER_PWD를 검사 
+			
+			MODAL창 사용하기 
+		-->
+		
+		
+		<!-- The Modal -->
+<div class="modal" id="deleteForm">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">회원 탈퇴</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" align="center">
+       	<b>회원 탈퇴 후 복구는 불가능 합니다. <br> 정말로 탈퇴 하시겠습니까? </b> <br><br>
+       <form action="<%=contextPath%>/delete.me" method="post">
+<%-- 		<input type="hidden" name="userId" value="<%=userId%>"> --%>
+			<table>
+				<tr>
+					<td>비밀번호 입력 : </td>	
+					<td><input type="password" name="userPwd" required></td>			
+				</tr>
+			</table>
+			<br>
+			<button type="submit" class="btn btn-danger">탈퇴하기</button>		
+		</form>
+      </div>
+		
+    </div>
+  </div>
+</div>		
+			
+			
 
 
 
