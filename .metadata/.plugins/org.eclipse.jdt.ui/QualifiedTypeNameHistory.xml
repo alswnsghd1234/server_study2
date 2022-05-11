@@ -8,10 +8,11 @@
 <fullyQualifiedTypeName name="com.kh.member.model.service.MemberService"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="com.kh.member.model.vo.Member"/>
-<fullyQualifiedTypeName name="java.sql.Date"/>
-<fullyQualifiedTypeName name="java.sql.Connection"/>
-<fullyQualifiedTypeName name="java.util.Properties"/>
-<fullyQualifiedTypeName name="com.kh.common.JDBCTemplate"/>
 <fullyQualifiedTypeName name="com.kh.board.model.service.NoticeService"/>
 <fullyQualifiedTypeName name="com.kh.board.model.vo.Notice"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="com.kh.common.JDBCTemplate"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="com.kh.board.model.dao.BoardDao"/>
+<fullyQualifiedTypeName name="java.util.Properties"/>
 </qualifiedTypeNameHistroy>
