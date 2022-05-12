@@ -63,7 +63,7 @@
                     	<td><%=b.getBoardNo() %></td>
                     	<td><%=b.getCategory() %></td>
                     	<td><%=b.getBoardTitle() %></td>
-                    	<td><%=b.getBaordwriter() %></td>
+                    	<td><%=b.getBoardWriter() %></td>
                     	<td><%=b.getCount() %></td>
                     	<td><%=b.getCreateDate() %></td>
                 	</tr>
@@ -99,6 +99,14 @@
 
         </table>
         <br>
+        <!--로그인한 회원만 보일 수 있도록 -->
+        <%if(loginUser!=null){%>
+        <div align="center">
+            <a href="<%=contextPath%>/enrollForm.bo" class="btn btn-info">글작성</a>
+        </div>
+        <br>
+        <%}%>
+
         <div class="paging-area" align="center">
        		<%if(currentPage!=1){ %>
             <button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=currentPage-1%>'">&lt;</button>

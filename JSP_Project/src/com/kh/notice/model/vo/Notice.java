@@ -38,7 +38,7 @@ public class Notice {
 	}
 	
 	
-	
+
 
 	public Notice(String noticeTitle, String noticeContent, String noticeWriter) {
 		super();
