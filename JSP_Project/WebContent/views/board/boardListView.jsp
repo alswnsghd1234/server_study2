@@ -97,6 +97,14 @@
 
             </tbody>
 
+            <script>
+                $(function(){
+                    $(".list-area>tbody>tr").click(function(){
+                        location.href ="<%=contextPath%>/detail.bo?bno="+$(this).children().eq(0).text();
+                    });
+                })
+            </script>
+
         </table>
         <br>
         <!--로그인한 회원만 보일 수 있도록 -->

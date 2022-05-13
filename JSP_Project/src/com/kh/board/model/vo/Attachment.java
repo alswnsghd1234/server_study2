@@ -29,6 +29,16 @@ public class Attachment {
 		this.fileLevel = fileLevel;
 		this.status = status;
 	}
+	
+	
+
+	public Attachment(int fileNo, String originName, String changename, String filePath) {
+		super();
+		this.fileNo = fileNo;
+		this.originName = originName;
+		this.changename = changename;
+		this.filePath = filePath;
+	}
 
 	public int getFileNo() {
 		return fileNo;

@@ -27,12 +27,25 @@ public class Board {
 				this.count = count;
 				this.createDate = createDate;
 			}
+			
+			
 
 
 
 
 
 
+
+			public Board(int boardNo, String category, String boardTitle, String content, String boardWriter,
+					Date createDate) {
+				super();
+				this.boardNo = boardNo;
+				this.category = category;
+				this.boardTitle = boardTitle;
+				this.content = content;
+				this.boardWriter = boardWriter;
+				this.createDate = createDate;
+			}
 
 			public Board(int boardNo, int boardType, String category, String boardTitle, String content,
 					String boardWriter, int count, Date createDate, String status) {

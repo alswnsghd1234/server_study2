@@ -199,6 +199,175 @@ public class BoardDao {
 		
 	}
 
+	public int increaseCount(Connection conn,int boardNo) {
+		
+		//update 문 => 처리된 행의 수
+		int result = 0;
+		PreparedStatement pstmt=null;
+		String sql = prop.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			
+			result = pstmt.executeUpdate(); //처리된 행 수
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
+	public Board selectBoard(Connection conn,int boardNo) {
+		//select 문 => ResultSet (한 행)
+		
+		Board b = null;
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				b = new Board(rset.getInt("BOARD_NO")
+						,rset.getString("CATEGORY_NAME")
+						,rset.getString("BOARD_TITLE")
+						,rset.getString("BOARD_CONTENT")
+						,rset.getString("USER_ID")
+						,rset.getDate("CREATE_DATE"));
+							
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return b;
+		}
+	public Attachment selectAttachment(Connection conn,int boardNo) {
+		
+		Attachment a = null;
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAttachment");
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				a = new Attachment(rset.getInt("FILE_NO")
+						,rset.getString("ORIGIN_NAME")
+						,rset.getString("CHANGE_NAME")
+						,rset.getString("FILE_PATH"));
+							
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			close(rset);
+			close(pstmt);
+		}
+		return a;
+		}
 
+	public int updateBoard(Connection conn, Board b, Attachment at) {
+
+		//update문 => 처리된 행수
+		int result =0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNewAttachment");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(b.getCategory()));
+			pstmt.setString(2, b.getBoardTitle());
+			pstmt.setString(3, b.getContent());
+			pstmt.setInt(4, b.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+		
+	}
+	
+	public int updateAttachment(Connection conn,Attachment at) {
+		
+		int result = 0;
+		Attachment a = null;
+		PreparedStatement pstmt =null;
+		
+		
+		String sql = prop.getProperty("updateAttachment");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangename());
+			pstmt.setString(3, at.getFilePath());
+			pstmt.setInt(4, at.getFileNo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int insertNewAttachment(Connection conn,Attachment at) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNewAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, at.getRefNo());
+			pstmt.setString(2, at.getOriginName());
+			pstmt.setString(3, at.getChangename());
+			pstmt.setString(4, at.getFilePath());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+				
+	}
+
+	
 }
+
+

@@ -1,5 +1,8 @@
 package com.kh.board.model.service;
-import static com.kh.common.JDBCTemplate.*;
+import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.commit;
+import static com.kh.common.JDBCTemplate.getConnection;
+import static com.kh.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -72,5 +75,64 @@ public class BoardService {
 		
 		
 	}
+	
+	public int increaseCount(int boardNo) {
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().increaseCount(conn, boardNo);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
 
+	public Board selectBoard(int boardNo) {
+		Connection conn = getConnection();
+		
+		Board b = new BoardDao().selectBoard(conn, boardNo);
+		
+		close(conn);
+		
+		return b;
+	}
+	public Attachment selectAttachment(int boardNo) {
+		Connection conn = getConnection();
+		
+		Attachment at = new BoardDao().selectAttachment(conn, boardNo);
+		
+		close(conn);
+		
+		return at;
+	}
+
+	public int updateBoard(Board b, Attachment at) {
+		Connection conn = getConnection();
+		
+		int result1 = new BoardDao().updateBoard(conn,b,at);
+		
+		int result2 = 1;
+		
+		if(at !=null) {
+			//기존의 첨부파일이 있었을 경우 - update
+			if(at.getFileNo()!=0) {
+				result2 = new BoardDao().updateAttachment(conn, at);
+				
+			}else {//기존의 첨부파일이 없었을 경우 - insert
+				result2 = new BoardDao().insertNewAttachment(conn, at);
+								
+			}
+		}
+		
+	if(result1>0 && result2>0) {
+		commit(conn);
+	}else {
+		rollback(conn);
+	}
+	return result1 * result2;
+	}
 }
