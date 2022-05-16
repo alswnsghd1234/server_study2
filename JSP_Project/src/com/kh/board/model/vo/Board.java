@@ -13,6 +13,16 @@ public class Board {
 			private Date createDate;//	CREATE_DATE	DATE
 			private String status; //	STATUS	VARCHAR2(1 BYTE)
 			
+			private String titleImg;
+			
+			public String getTitleImg() {
+				return titleImg;
+			}
+
+			public void setTitleImg(String titleImg) {
+				this.titleImg = titleImg;
+			}
+
 			public Board() {
 				super();
 			}

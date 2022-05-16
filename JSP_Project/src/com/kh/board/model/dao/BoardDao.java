@@ -377,5 +377,101 @@ public class BoardDao {
 			
 			
 		}
+
+		public int insertThumbnailBoard(Connection conn, Board b) {
+
+			int result = 0;
+			
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("insertTumbnailBoard");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, b.getBoardTitle());
+				pstmt.setString(2, b.getContent());
+				pstmt.setInt(3, Integer.parseInt(b.getBoardWriter()));
+				
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+				
+			}
+			return result;
+		}
+		
+		public int insertAttachmentList(Connection conn,ArrayList<Attachment> list) {
+			
+			//insert문 여러번
+			int result = 1;
+			
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("insertAttachmentList");
+			
+				
+				try {
+					for(Attachment at : list) {
+						//반복문이 돌때마다 미완성된 sql문을 담은 pstmt 객체 생성
+						pstmt=conn.prepareStatement(sql);
+						//위치홀더 채워주기
+					pstmt.setString(1, at.getOriginName());
+					pstmt.setString(2,at.getChangename());
+					pstmt.setString(3, at.getFilePath());
+					pstmt.setInt(4, at.getFileLevel());
+					
+					result *= pstmt.executeUpdate();
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				
+			}finally {
+				close(pstmt);
+				
+			}
+				return result;
+		}
+
+		public ArrayList<Board> selectThumbnailList(Connection conn) {
+
+			ArrayList<Board> list = new ArrayList<>();
+			
+			PreparedStatement pstmt = null;
+			
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("selectThumbnailList");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					Board b = new Board();
+					b.setBoardNo(rset.getInt("BOARD_NO"));
+					b.setBoardTitle(rset.getString("BOARD_TITLE"));
+					b.setCount(rset.getInt("COUNT"));
+					b.setTitleImg(rset.getString("TITLEIMG"));
+					
+					list.add(b);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+				
+			}
+			
+			
+			
+			return list;
+		}
 		
 }

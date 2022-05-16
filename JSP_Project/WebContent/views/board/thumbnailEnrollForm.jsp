@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.board.model.vo.Board,java.util.ArrayList"%>
+    
+    <%
+    	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
+    
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +38,8 @@
         <h2 align="center">사진게시판 작성하기</h2>
         <br>
 
-        <form action="" id="enroll-form" method="post" enctype="multipart/form-data">
+        <form action="<%=contextPath%>/insert.th" id="enroll-form" method="post" enctype="multipart/form-data">
+        	<input type="hidden" name="userNo" value="<%=loginUser.getUserNo() %>">
             <table align="center">
                 <tr>
                     <th width="100">제목</th>
@@ -65,6 +71,9 @@
                 <input type="file" id="files3" onchange="loadImg(this,3)" name="files3">
                 <input type="file" id="files4" onchange="loadImg(this,4)" name="files4">
             </div>
+    <div align="center">
+        <button>등록하기</button>
+    </div>
         </form>
     </div>
 
@@ -109,9 +118,6 @@
             }
         }
     </script>
-    <div align="center">
-        <button>등록하기</button>
-    </div>
 
 </body>
 </html>

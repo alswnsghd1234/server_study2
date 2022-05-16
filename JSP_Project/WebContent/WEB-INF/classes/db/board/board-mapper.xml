@@ -126,6 +126,46 @@
 		SET STATUS = 'N'
 		WHERE BOARD_NO = ?
 	</entry>
+	<entry key="insertTumbnailBoard">
+		INSERT INTO BOARD(
+							 BOARD_NO
+							 ,BOARD_TYPE
+							,BOARD_TITLE
+							,BOARD_CONTENT
+							,BOARD_WRITER
+							)
+		VALUES(
+							SEQ_BNO.NEXTVAL
+							,2
+							,?
+							,?
+							,?
+						)
+	
+	</entry>
+	<entry key="insertAttachmentList">
+		INSERT INTO ATTACHMENT(FILE_NO
+							  ,REF_BNO
+							  ,ORIGIN_NAME
+							  ,CHANGE_NAME
+							  ,FILE_PATH
+							  ,FILE_LEVEL
+							  )
+		VALUES (SEQ_FNO.NEXTVAL,SEQ_BNO.CURRVAL,?,?,?,?)
+	
+	
+	</entry>
+	<entry key="selectThumbnailList">
+		SELECT BOARD_NO,BOARD_TITLE,COUNT,FILE_PATH||CHANGE_NAME "TITLEIMG"
+		FROM BOARD B
+		JOIN ATTACHMENT ON(BOARD_NO=REF_BNO)
+		WHERE BOARD_TYPE = 2
+		AND B.STATUS = 'Y'
+		AND FILE_LEVLE=1
+		ORDER BY CREATE_DATE DESC
+	
+	
+	</entry>
 	
 	
 
