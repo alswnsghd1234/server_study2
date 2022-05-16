@@ -7,7 +7,7 @@
 	//loginUser가 null이 아니면 로그인 후 화면을 보여주면 된다.
 	
 	String alertMsg =(String)session.getAttribute("alertMsg");
-	boolean isAdmin =loginUser!=null && loginUser.getUserId().equals("admin");
+	boolean isAdmin = loginUser !=null && loginUser.getUserId().equals("admin");
 	
 %>
     
@@ -137,7 +137,7 @@
         <div class="menu"><a href="<%=contextPath%>">HOME</a></div>
         <div class="menu"><a href="<%=contextPath%>/list.no">공지사항</a></div>
         <div class="menu"><a href="<%=contextPath%>/list.bo?cpage=1">일반게시판</a></div>
-        <div class="menu"><a href="">사진게시판</a></div>
+        <div class="menu"><a href="<%=contextPath%>/list.th">사진게시판</a></div>
 
 
     </div>

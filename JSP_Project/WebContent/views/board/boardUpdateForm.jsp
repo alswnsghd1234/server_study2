@@ -48,10 +48,18 @@
                     <th>카테고리</th>
                     <td>
                         <select name="category" >
-                        	<%for(Category c : list) {%>
-                        		<option value="<%=c.getCategoryNo()%>"><%=c.getCategoryName() %></option>
-                        	<%} %>
-                      
+                        <%for(Category c : list) {%>
+                            <option value="<%=c.getCategoryNo()%>"><%=c.getCategoryName() %></option>
+                                <!--   <option value="10">공통</option>
+                                        <option value="20">운동</option>
+                                        <option value="30">등산</option>
+                                        <option value="40">게임</option>
+                                    <option value="50">낚시</option>
+                                        <option value="60">요리</option>
+                                    <option value="70">기타</option> -->
+
+                        <%} %>
+                    
                         </select>
                         <script>
                             $(function(){
@@ -59,11 +67,8 @@
                                     if($(this).text()=="<%=b.getCategory()%>"){
                                         $(this).attr("selected",true);
                                     }
-                                
                                 })
-
                             })
-
 
                         </script>
                     </td>
@@ -82,8 +87,8 @@
                     <%if(at!=null) {%>
                     <%=at.getOriginName()%>
                     <!-- 원본파일의 파일번호, 수정명을 hidden으로 요청보내기 -->
-                    <input type="hidden" name="originNo" value="<%=at.getFileNo() %>">
-                    <input type="hidden" name="originFileName" value=<%=at.getChangename() %>">
+                    <input type="hidden" name="originFileNo" value="<%=at.getFileNo()%>">
+                    <input type="hidden" name="orignFileName" value="<%=at.getChangename()%>">
                     <%} %>
                     <input type="file" name="reUpfile">
                     </td>

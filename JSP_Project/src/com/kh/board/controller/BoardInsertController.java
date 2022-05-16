@@ -70,6 +70,7 @@ public class BoardInsertController extends HttpServlet {
 				 * */
 				//상대경로 구하는 방법 
 				String savePath = request.getSession().getServletContext().getRealPath("/resources/board_upfiles/");
+				//String savePath2 ="D:\\server-workspace2\\JSP_Project\\WebContent\\resources\\board_upfiles\\";
 				//결과값 = 절대경로주소
 				//System.out.println(savePath);
 				/*
@@ -139,15 +140,9 @@ public class BoardInsertController extends HttpServlet {
 					}
 					request.setAttribute("errorMsg", "게시글 작성 실패");
 					request.getRequestDispatcher("/views/common/errorPage.jsp").forward(request, response);
-					
 				}
-				
 			}
-		
-	
-	
-	}
-
+		}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

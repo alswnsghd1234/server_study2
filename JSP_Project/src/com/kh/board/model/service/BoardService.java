@@ -1,8 +1,5 @@
 package com.kh.board.model.service;
-import static com.kh.common.JDBCTemplate.close;
-import static com.kh.common.JDBCTemplate.commit;
-import static com.kh.common.JDBCTemplate.getConnection;
-import static com.kh.common.JDBCTemplate.rollback;
+import static com.kh.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -72,14 +69,12 @@ public class BoardService {
 		
 		//하나라도 실패해서 0이되면 실패값을 반환할수있도록 곱셈연산 후 리턴 
 		return result1 * result2;
-		
-		
 	}
 	
 	public int increaseCount(int boardNo) {
 		Connection conn = getConnection();
 		
-		int result = new BoardDao().increaseCount(conn, boardNo);
+		int result = new BoardDao().increaseCount(conn, boardNo); //처리된 행수(성공/실패)
 		
 		if(result>0) {
 			commit(conn);
@@ -90,11 +85,11 @@ public class BoardService {
 		
 		return result;
 	}
-
+	
 	public Board selectBoard(int boardNo) {
 		Connection conn = getConnection();
 		
-		Board b = new BoardDao().selectBoard(conn, boardNo);
+		Board b = new BoardDao().selectBoard(conn, boardNo); //조회결과
 		
 		close(conn);
 		
@@ -110,29 +105,55 @@ public class BoardService {
 		return at;
 	}
 
-	public int updateBoard(Board b, Attachment at) {
+	public int updateBoard(Board b, Attachment newAttachment) {
 		Connection conn = getConnection();
 		
-		int result1 = new BoardDao().updateBoard(conn,b,at);
+		
+		
+		int result1 = new BoardDao().updateBoard(conn,b,newAttachment);
 		
 		int result2 = 1;
 		
-		if(at !=null) {
-			//기존의 첨부파일이 있었을 경우 - update
-			if(at.getFileNo()!=0) {
-				result2 = new BoardDao().updateAttachment(conn, at);
+		//파일이 있다면
+		if(newAttachment != null) {
+			
+			//기존의 첨부파일이 있었을경우 -update
+			if(newAttachment.getFileNo()!=0) {
+				result2 = new BoardDao().updateAttachment(conn, newAttachment);
 				
-			}else {//기존의 첨부파일이 없었을 경우 - insert
-				result2 = new BoardDao().insertNewAttachment(conn, at);
-								
+			}else {//기존의 첨부파일이 없었을 경우 -insert
+				result2 = new BoardDao().insertNewAttachment(conn, newAttachment);
+				
 			}
 		}
 		
-	if(result1>0 && result2>0) {
-		commit(conn);
-	}else {
-		rollback(conn);
+		if(result1>0 && result2>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result1 * result2;
 	}
-	return result1 * result2;
+
+	public int deleteBoard(int boardNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().deleteBoard(conn,boardNo);
+		
+		if(result>0) {
+			commit(conn);
+			
+		}else {
+			rollback(conn);
+			
+		}
+		close(conn);
+		return result;
+		
 	}
+
 }

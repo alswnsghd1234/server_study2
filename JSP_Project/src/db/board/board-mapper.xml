@@ -76,35 +76,57 @@
 		WHERE BOARD_NO = ?
 		AND STATUS = 'Y'
 	</entry>
+	
 	<entry key="selectBoard">
-	SELECT BOARD_NO,CATEGORY_NAME,BOARD_TITLE,BOARD_CONTENT,USER_ID,CREATE_DATE
-	FROM BOARD B
-	JOIN CATEGORY USING(CATEGORY_NO)
-	JOIN MEMBER ON(BOARD_WRITER = USER_NO)
-	WHERE BOARD_NO = ?
-	AND B.STATUS ='Y'
+		SELECT BOARD_NO,CATEGORY_NAME,BOARD_TITLE,BOARD_CONTENT,USER_ID,CREATE_DATE
+		FROM BOARD B
+		JOIN CATEGORY USING(CATEGORY_NO)
+		JOIN MEMBER ON(BOARD_WRITER = USER_NO)
+		WHERE BOARD_NO = ?
+		AND B.STATUS = 'Y'
 	</entry>
 	
 	<entry key="selectAttachment">
 		SELECT FILE_NO,ORIGIN_NAME,CHANGE_NAME,FILE_PATH
 		FROM ATTACHMENT
-		WHERE REF_BNO=?
+		WHERE REF_BNO= ?
 	</entry>
 	
-	<entry key="updateAttachment">
-			INSERT INTO ATTACHMENT(FILE_NO,REF_BNO,ORIGIN_NAME,CHANGE_NAME,FILE_PATH)
-			VALUES (SEQ_FNO.NEXTVAL,?,?,?)
+	<entry key="updateBoard">
+		UPDATE BOARD
+		SET CATEGORY_NO = ?
+		    ,BOARD_TITLE = ?
+		    ,BOARD_CONTENT = ?
+		WHERE BOARD_NO = ?
+		AND STATUS = 'Y'
 	</entry>
 	
+	<!-- 첨부파일 없을 경우 추가 -->
 	<entry key="insertNewAttachment">
-			UPDATE ATTACHMENT
-			SET ORIGIN_NAME = ?
-   		    ,CHANGE_NAME = ?
-  			,FILE_PATH = ?
-   		 	,UPLOAD_DATE = SYSDATE
-			WHERE FILE_NO = ?
-			AND STATUS = 'Y'
+		INSERT INTO ATTACHMENT(FILE_NO
+							  ,REF_BNO
+							  ,ORIGIN_NAME
+							  ,CHANGE_NAME
+							  ,FILE_PATH)
+		VALUES (SEQ_FNO.NEXTVAL,?,?,?,?)
 	</entry>
+	
+	<!-- 기존에 있는 파일정보 변경 -->
+	<entry key="updateAttachment">
+		UPDATE ATTACHMENT
+		SET ORIGIN_NAME = ?
+		    ,CHANGE_NAME = ?
+		    ,FILE_PATH = ?
+		    ,UPLOAD_DATE = SYSDATE
+		WHERE FILE_NO = ?
+		AND STATUS = 'Y'
+	</entry>
+	<entry key="deleteboard">
+		UPDATE BOARD
+		SET STATUS = 'N'
+		WHERE BOARD_NO = ?
+	</entry>
+	
 	
 
 </properties>

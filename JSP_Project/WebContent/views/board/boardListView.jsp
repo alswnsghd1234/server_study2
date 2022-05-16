@@ -97,15 +97,22 @@
 
             </tbody>
 
-            <script>
-                $(function(){
-                    $(".list-area>tbody>tr").click(function(){
-                        location.href ="<%=contextPath%>/detail.bo?bno="+$(this).children().eq(0).text();
-                    });
-                })
-            </script>
-
         </table>
+
+        <script>
+            $(function(){
+                $(".list-area>tbody>tr").click(function(){
+                    //$(this).children().eq(0).text() 글번호 가지고오는 구문
+                    //location.href ="<%=contextPath%>/detail.bo?bno=" 쿼리스트링 요청
+                    location.href ="<%=contextPath%>/detail.bo?bno="+$(this).children().eq(0).text();
+                });
+            })
+
+        </script>
+
+
+
+
         <br>
         <!--로그인한 회원만 보일 수 있도록 -->
         <%if(loginUser!=null){%>

@@ -33,10 +33,12 @@ public class BoardUpdateFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//수정페이지에 필요한 원래 작성정보 가져오는 서블릿
 		
 		BoardService bs = new BoardService();
 		
 		int boardNo = Integer.parseInt(request.getParameter("bno"));
+		
 		ArrayList<Category> clist = bs.selectCategoryList();
 		
 		Board b = bs.selectBoard(boardNo);
@@ -49,6 +51,7 @@ public class BoardUpdateFormController extends HttpServlet {
 		
 		request.getRequestDispatcher("views/board/boardUpdateForm.jsp").forward(request, response);
 		
+	
 	}
 
 	/**
