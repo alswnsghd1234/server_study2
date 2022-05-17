@@ -1,11 +1,4 @@
 INDEX VERSION 1.4+C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-1741939608.index
-1261652606.index
-203761796.index
-576758885.index
 2807446482.index
-3787908455.index
-1943729604.index
-3728457815.index
-3787908455.index
 1741939608.index
+576758885.index
