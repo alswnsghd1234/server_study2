@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
 <!-- jQuery library -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <!-- Popper JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -105,7 +105,7 @@
 
         <script>
             function enrollPage(){
-               location.href="<%=contextPath%>/views/member/MemberEnrollForm.jsp";
+               //location.href="<%=contextPath%>/views/member/MemberEnrollForm.jsp";
             	//url에 디렉토리 구조가 노출되면 보안상 위험하다.
             	//단순한 정적페이지 이동도 servlet을 거쳐서 url에 매핑값만 보일수 있도록 작업하기
             	location.href="/JSP/enrollForm.me";

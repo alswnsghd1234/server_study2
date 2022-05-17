@@ -217,32 +217,38 @@ public class MemberDao {
 		return result;
 	}
 
-	public int idCheck(Connection conn,String checkId) {
-
-		//select로  Member 테이블에	userId 중에 checkId가 있는지 없는지 확인
+	public int idCheck(Connection conn, String checkId) {
 		
-		int result=0;
+		//select로 Member테이블에 userId중에 checkId가 있는지 없는지 확인 
+		int count = 0;
 		
 		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
 		
 		String sql = prop.getProperty("idCheck");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, checkId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("COUNT");
+			}
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
+			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		return result;
 		
-		
+		return count;
 		
 	}
-
-
 }
 
 

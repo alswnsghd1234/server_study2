@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.member.model.service.MemberService;
 
 /**
- * Servlet implementation class AjaxidCheckController
+ * Servlet implementation class AjaxIdCheckController
  */
 @WebServlet("/idCheck.me")
-public class AjaxidCheckController extends HttpServlet {
+public class AjaxIdCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxidCheckController() {
+    public AjaxIdCheckController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,20 +29,18 @@ public class AjaxidCheckController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String checkId = request.getParameter("checkId");
 		
 		int count = new MemberService().idCheck(checkId);
+		//count는 중복인지 아닌지 조회해온 결과
 		
-		if(count>0){
-			//중복이기 대문에 사용불가
-			response.getWriter().print("NNNN");
-		}else {
-			//중복이 아니기 때문에 사용가능
-			response.getWriter().print("NNNY");
+		if(count>0) { //중복이기때문에  사용불가 
+			response.getWriter().print("NNNNN");
+		}else { //중복이 아니기때문에 사용 가능 
+			response.getWriter().print("NNNNY");
 		}
-	
-	
+		
 	
 	}
 

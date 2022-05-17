@@ -39,10 +39,10 @@ public class ThumbnailInsertController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		//전달된 request객체가 multipart/form-data 형식인지
+		//전달된 request객체가 multipart/form-data 형식인지 
 		if(ServletFileUpload.isMultipartContent(request)) {
 			
-			//1_1 전송용량제한
+			//1_1 전송 용량 제한
 			int maxSize = 10 * 1024 * 1024;
 			
 			//1_2 저장할 물리 경로 알아내기
@@ -52,6 +52,7 @@ public class ThumbnailInsertController extends HttpServlet {
 			MultipartRequest multiRequest = new MultipartRequest(request,savePath,maxSize,"UTF-8",new MyFileRenamePolicy());
 			
 			//3. DB에 전달할 값을 받아오기
+			//board에 들어갈 정보 
 			Board b = new Board();
 			
 			b.setBoardWriter(multiRequest.getParameter("userNo"));
@@ -59,30 +60,30 @@ public class ThumbnailInsertController extends HttpServlet {
 			b.setContent(multiRequest.getParameter("boardContent"));
 			
 			//Attachment에 들어갈 정보
-			//하나 이상 나올것이기 때문에 list에 담아서 보내기 (대표 이미지에 required)
+			//하나 이상 나올것이기 때문에 list에 담아서 보내기 (대표이미지에 required)
 			
 			ArrayList<Attachment> list = new ArrayList<>();
 			
-			//파일 최대 개수 4로 정해놔서
+			//파일의 개수는 최대 4개이고 각 네임값은 file1~4 까지이니까 해당 키값 반복해서 꺼내어 넣기
 			for(int i=1; i<=4; i++) {
-				String key = "files"+i;
+				String key = "file"+i;
 				
 				if(multiRequest.getOriginalFileName(key)!=null) {
-					//첨부파일이 존재할 경우 Attachment 객체에 값 넣고 list에 추가
+					//첨부파일이 존재할경우 Attachment객체에 값 넣고 list에 추가
 					Attachment at = new Attachment();
 					at.setOriginName(multiRequest.getOriginalFileName(key));
 					at.setChangename(multiRequest.getFilesystemName(key));
 					at.setFilePath("resources/thumbnail_upfiles/");
 					
-					if(i==1) {//대표일경우
+					if(i==1) {//대표이미지일 경우
 						at.setFileLevel(1);
-						
-					}else {//상세일경우
+					}else {//상세이미지일 경우
 						at.setFileLevel(2);
 					}
 					list.add(at);
 				}
 			}
+			
 			int result = new BoardService().insertThumbnailBoard(b,list);
 			
 			if(result>0) {
@@ -96,8 +97,8 @@ public class ThumbnailInsertController extends HttpServlet {
 			
 			
 			
-			
 		}
+	
 	}
 
 	/**

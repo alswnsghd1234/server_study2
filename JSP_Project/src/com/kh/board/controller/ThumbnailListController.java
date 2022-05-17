@@ -32,7 +32,7 @@ public class ThumbnailListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Board> list = new BoardService().selectThumbnaiList();
+		ArrayList<Board> list = new BoardService().selectThumbnailList();
 		
 		request.setAttribute("list", list);
 		

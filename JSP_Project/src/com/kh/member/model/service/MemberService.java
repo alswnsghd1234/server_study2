@@ -103,17 +103,10 @@ public class MemberService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		int count = new MemberDao().idCheck(conn,checkId);
-
-		if(count>0) {
-			JDBCTemplate.commit(conn);
-		}else {
-			JDBCTemplate.rollback(conn);
-		}
 		
 		JDBCTemplate.close(conn);
 		
 		return count;
-		
 		
 	}
 

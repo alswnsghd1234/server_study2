@@ -15,14 +15,6 @@ public class Board {
 			
 			private String titleImg;
 			
-			public String getTitleImg() {
-				return titleImg;
-			}
-
-			public void setTitleImg(String titleImg) {
-				this.titleImg = titleImg;
-			}
-
 			public Board() {
 				super();
 			}
@@ -64,8 +56,14 @@ public class Board {
 			}
 			
 			
-			
-			
+
+			public String getTitleImg() {
+				return titleImg;
+			}
+
+			public void setTitleImg(String titleImg) {
+				this.titleImg = titleImg;
+			}
 
 			public int getBoardNo() {
 				return boardNo;

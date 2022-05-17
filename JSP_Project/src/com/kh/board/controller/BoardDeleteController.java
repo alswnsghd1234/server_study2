@@ -32,20 +32,17 @@ public class BoardDeleteController extends HttpServlet {
 		
 		int boardNo = Integer.parseInt(request.getParameter("bno"));
 		
-		new BoardService().deleteBoard(boardNo);
-		
 		int result = new BoardService().deleteBoard(boardNo);
 		
 		if(result>0) {
 			request.getSession().setAttribute("alertMsg", "삭제 성공");
 			response.sendRedirect(request.getContextPath()+"/list.bo?cpage=1");
-			
 		}else {
-			request.setAttribute("errorMsg", "삭제 실패");
+			request.setAttribute("errorMsg","삭제 실패");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 			
 		}
-		
+	
 	}
 
 	/**

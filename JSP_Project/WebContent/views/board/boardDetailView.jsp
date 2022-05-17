@@ -57,7 +57,7 @@
 	                <%if(at==null){ %><!-- 첨부파일이 없을 경우 -->
 						첨부파일이 없습니다.
     	            <%}else{ %><!-- 첨부파일이 있을 경우 -->
-    	            	<a download="<%=at.getOriginName() %>" href="<%=contextPath%>/<%=at.getFilePath()+at.getChangename()%>"><%=at.getOriginName() %></a>
+    	            	<a download="<%=at.getOriginName()%>" href="<%=contextPath%>/<%=at.getFilePath()+at.getChangename()%>"><%=at.getOriginName() %></a>
     	            <%} %>
                 </td>
             </tr>
@@ -71,7 +71,7 @@
            <!--로그인한 사용자가 게시글 작성자일 경우-->
            <%if(loginUser!=null && loginUser.getUserId().equals(b.getBoardWriter())||isAdmin){ %>
             <a class="btn btn-dark" href="<%=contextPath %>/updateForm.bo?bno=<%=b.getBoardNo()%>">수정하기</a>
-            <a class="btn btn-danger" href="<%=contextPath %>/delete.bo?bno=<%=b.getBoardNo()%>">삭제하기</a>
+            <a class="btn btn-danger" href="<%=contextPath%>/delete.bo?bno=<%=b.getBoardNo()%>">삭제하기</a>
        		<%} %>
         </div>
 
