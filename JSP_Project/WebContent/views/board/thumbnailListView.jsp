@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.board.model.vo.*,java.util.ArrayList"%>
+    
+       <%
+        
+    	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
+    	
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,38 +44,43 @@
         <br>
         <h2 align="center">사진게시판</h2>
         <br>
-
+		<!-- 로그인한 회원만 보이게 작성 -->
+		<%if(loginUser != null) {%>
         <div id="writebtn" align="center">
             <a href="<%=contextPath%>/enrollForm.th" class="btn btn-info">글작성</a>
         </div>
+        <%} %>
 
         <div class="list-area">
+        <%if(!list.isEmpty()) {%>
+        <%for(Board b : list) { %>
             <div class="thumbnail" align="center">
-                <img src="/" alt="" width="200px" height="150px">
+                <input type="hidden" value="<%=b.getBoardNo()%>">
+                <img src="<%=contextPath%>/<%=b.getTitleImg()%>" alt="" width="200px" height="150px">
                 <p>
-                    No. 125 <br>
-                    조회수 : 55
+                    No. <%=b.getBoardNo()%> <%=b.getBoardTitle()%><br>
+                    조회수 : <%=b.getCount()%>
                 </p>
-            </div>
-
-                <div class="thumbnail" align="center">
-                    <img src="/" alt="" width="200px" height="150px">
-                    <p>
-                        No. 135 <br>
-                        조회수 : 44
-                    </p>
-            </div>
-
-            
-            <div class="thumbnail" align="center">
-                <img src="/" alt="" width="200px" height="150px">
-                <p>
-                    No. 215 <br>
-                    조회수 : 99
-                </p>
-            </div>
+            	</div>
+            	<%} %>
+            	<%}else{ %>
+            	등록된 게시글이 없습니다.
+            	<%} %>
             </div>
         </div>
+
+        <script>
+            $(function(){
+                $(".thumbnail").click(function(){                   //$(this).chidren.eq(0).val() -보드 No
+                    location.href = "<%=contextPath%>/detail.th?bno="+$(this).children().eq(0).val();
+                })
+
+
+            })
+
+
+
+        </script>
 
 
 </body>

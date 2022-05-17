@@ -1,5 +1,8 @@
 package com.kh.board.model.service;
-import static com.kh.common.JDBCTemplate.*;
+import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.commit;
+import static com.kh.common.JDBCTemplate.getConnection;
+import static com.kh.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -183,4 +186,17 @@ public class BoardService {
 		
 		return list;
 	}
+
+	public ArrayList<Attachment> selectAttachmentList(int boardNo) {
+
+		Connection conn = getConnection();
+		
+		ArrayList<Attachment> list = new BoardDao().selectAttachmentList(conn, boardNo);
+		
+		close(conn);
+		
+		return list;
+	}
+
+
 }

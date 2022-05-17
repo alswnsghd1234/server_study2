@@ -65,7 +65,7 @@ public class ThumbnailInsertController extends HttpServlet {
 			
 			//파일 최대 개수 4로 정해놔서
 			for(int i=1; i<=4; i++) {
-				String key = "file"+i;
+				String key = "files"+i;
 				
 				if(multiRequest.getOriginalFileName(key)!=null) {
 					//첨부파일이 존재할 경우 Attachment 객체에 값 넣고 list에 추가

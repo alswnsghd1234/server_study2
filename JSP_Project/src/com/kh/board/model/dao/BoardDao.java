@@ -412,10 +412,11 @@ public class BoardDao {
 			PreparedStatement pstmt = null;
 			
 			String sql = prop.getProperty("insertAttachmentList");
-			
 				
 				try {
+					System.out.println(list);
 					for(Attachment at : list) {
+						System.out.println("2");
 						//반복문이 돌때마다 미완성된 sql문을 담은 pstmt 객체 생성
 						pstmt=conn.prepareStatement(sql);
 						//위치홀더 채워주기
@@ -472,6 +473,39 @@ public class BoardDao {
 			
 			
 			return list;
+		}
+
+		public ArrayList<Attachment> selectAttachmentList(Connection conn, int boardNo) {
+
+			ArrayList<Attachment> list = new ArrayList<>();
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			String sql = prop.getProperty("selectAttachment");
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				rset = pstmt.executeQuery();
+				
+				
+				while(rset.next()) {
+					Attachment at = new Attachment();
+					
+					at.setChangename(rset.getString("CHANGE_NAME"));
+					at.setOriginName(rset.getString("ORIGIN_NAME"));
+					at.setFilePath(rset.getString("FILE_PATH"));
+					
+					list.add(at);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			return list;
+			
+			
 		}
 		
 }
