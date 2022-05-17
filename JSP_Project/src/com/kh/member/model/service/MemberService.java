@@ -98,4 +98,23 @@ public class MemberService {
 		return result;
 	}
 
+	public int idCheck(String checkId) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int count = new MemberDao().idCheck(conn,checkId);
+
+		if(count>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return count;
+		
+		
+	}
+
 }

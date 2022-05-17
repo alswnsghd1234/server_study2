@@ -216,6 +216,33 @@ public class MemberDao {
 		
 		return result;
 	}
+
+	public int idCheck(Connection conn,String checkId) {
+
+		//select로  Member 테이블에	userId 중에 checkId가 있는지 없는지 확인
+		
+		int result=0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("idCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, checkId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+		
+		
+		
+	}
+
+
 }
 
 
