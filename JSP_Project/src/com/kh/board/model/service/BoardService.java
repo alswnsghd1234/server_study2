@@ -11,6 +11,7 @@ import com.kh.board.model.dao.BoardDao;
 import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
 import com.kh.board.model.vo.Category;
+import com.kh.board.model.vo.Reply;
 import com.kh.common.PageInfo;
 
 public class BoardService {
@@ -198,6 +199,28 @@ public class BoardService {
 		
 		return list;
 		
+	}
+
+	public ArrayList<Reply> selectrelpyList(int boardNo) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Reply> list = new BoardDao().selectReplyList(conn,boardNo);
+		
+		close(conn);
+		
+		return list;
+	}
+
+	public int insertReply(Reply r) {
+
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().insertReply(conn,r);
+		
+		close(conn);
+		
+		return result;
 	}
 
 }

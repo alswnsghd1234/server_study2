@@ -19,5 +19,11 @@ C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\j
 \JSP_Project\src
 C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\576758885.index
 \Ajax_Projects\src
+C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1013465975.index
+\Semi_Project\src
+C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\278437340.index
+\Semi_Project\src
+C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3362936925.index
+\Semi_Project\src
 C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1857946050.index
 \JSP_Project\src

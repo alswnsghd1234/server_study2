@@ -69,7 +69,6 @@ public class MemberInsertController extends HttpServlet {
 		}else {
 			
 			request.setAttribute("errorMsg", "회원가입에 실패하였습니다.");
-			
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
 			

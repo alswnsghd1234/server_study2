@@ -54,11 +54,11 @@
             <tr>
                 <th>첨부파일</th>
                 <td colspan="3">
-	                <%if(at==null){ %><!-- 첨부파일이 없을 경우 -->
+                <%if(at==null){ %><!-- 첨부파일이 없을 경우 -->
 						첨부파일이 없습니다.
-    	            <%}else{ %><!-- 첨부파일이 있을 경우 -->
-    	            	<a download="<%=at.getOriginName()%>" href="<%=contextPath%>/<%=at.getFilePath()+at.getChangename()%>"><%=at.getOriginName() %></a>
-    	            <%} %>
+                <%}else{ %><!-- 첨부파일이 있을 경우 -->
+                    <a download="<%=at.getOriginName()%>" href="<%=contextPath%>/<%=at.getFilePath()+at.getChangename()%>"><%=at.getOriginName() %></a>
+                <%} %>
                 </td>
             </tr>
         </table>
@@ -67,12 +67,90 @@
 
         <div align="center">
             <a href="<%=contextPath%>/list.bo?cpage=1" class="btn btn-info">목록으로</a>
-           
-           <!--로그인한 사용자가 게시글 작성자일 경우-->
-           <%if(loginUser!=null && loginUser.getUserId().equals(b.getBoardWriter())||isAdmin){ %>
+        
+        <!--로그인한 사용자가 게시글 작성자일 경우-->
+    <%if(loginUser!=null && loginUser.getUserId().equals(b.getBoardWriter())||isAdmin){ %>
             <a class="btn btn-dark" href="<%=contextPath %>/updateForm.bo?bno=<%=b.getBoardNo()%>">수정하기</a>
             <a class="btn btn-danger" href="<%=contextPath%>/delete.bo?bno=<%=b.getBoardNo()%>">삭제하기</a>
-       		<%} %>
+        <%} %>
+        </div>
+
+
+
+        <div id="reply-area">
+            <table align="center" border="1">
+                <thead>
+                    <%if(loginUser!=null){ %>
+                    <tr>
+                        <th>댓글작성</th>
+                            <td>
+                                <textarea rows="3" cols="50" id="replyContent" style="resize: none;"></textarea>
+                            </td>
+                            <td><button onclick="insertReply();">댓글 등록</button></td>
+                            <%} else{%>
+                            </tr>
+                            <th>댓글작성</th>
+                            <td>
+                                <textarea rows="3" cols="50" id="replyContent" style="resize: none;" readonly>로그인 해주세요</textarea>
+                            </td>
+                            <td><button disabled>댓글 등록</button></td>
+                        </tr>
+                        <%}%>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <script>
+                $(function(){
+                    selectReply();
+                })
+                //댓글 작성 함수
+                function insertReply(){
+                    $.ajax({
+                        url:"replyInsert.bo",
+                        data:{
+                            content : $("#replyContent").val(),
+                            bno : <%=b.getBoardNo()%>
+                        },
+                        type : "post",
+                        success : function(result){//매개변수명
+                            if(result>0){
+                                selectReply();
+                                $("#replyContent").val("");//초기화
+                            }
+                        },
+                        error: function(result){
+                            console.log("통신 실패");
+                        }
+                    })
+                }
+                //댓글조회함수
+                function selectReply(){
+                    $.ajax({
+                        url:"replyList.bo",
+                        data:{bno : <%=b.getBoardNo()%>},
+                        success : function(result){
+                            //console.log(result);
+                            var row = "";
+                            for(var i in result){
+                                row+="<tr>"
+                                +   "<td>"+result[i].replyWriter+"</td>"
+                                +   "<td>"+result[i].replyContent+"</td>"
+                                +   "<td>"+result[i].createDate+"</td>"
+                                +   "<tr>";
+                            }
+                            //console.log(row);
+                            $("#reply-area tbody").html(row);
+                        },
+                        error: function(){
+                            console.log("통신 실패");
+                        }
+                    })
+                }
+                
+
+            </script>
         </div>
 
 
