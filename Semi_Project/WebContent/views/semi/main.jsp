@@ -27,7 +27,7 @@
 <body>
 <%@include file="/views/common/menubar.jsp"%>
 
- 
+
 
       <!-- 인기상품 + 공지 영역-->
       <div class="middle">

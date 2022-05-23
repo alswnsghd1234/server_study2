@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.kh.common.PageInfo,java.util.ArrayList,com.kh.board.model.vo.Board"%>
-
+	
 
 <%
 	PageInfo pi =(PageInfo)request.getAttribute("pi");
@@ -103,7 +103,7 @@
             $(function(){
                 $(".list-area>tbody>tr").click(function(){
                     //$(this).children().eq(0).text() 글번호 가지고오는 구문
-                    //location.href ="<%=contextPath%>/detail.bo?bno=" 쿼리스트링 요청
+<%--                     location.href ="<%=contextPath%>/detail.bo?bno=" 쿼리스트링 요청 --%>
                     location.href ="<%=contextPath%>/detail.bo?bno="+$(this).children().eq(0).text();
                 });
             })
