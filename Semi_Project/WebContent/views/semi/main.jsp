@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="./resources/css/main.css">
+  <link rel="stylesheet" href="/Semi/resources/css/main.css">
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -27,7 +27,8 @@
 <body>
 <%@include file="/views/common/menubar.jsp"%>
 
-
+      <!--중간부터 끝-->
+      <div class="middle-bottom">
 
       <!-- 인기상품 + 공지 영역-->
       <div class="middle">

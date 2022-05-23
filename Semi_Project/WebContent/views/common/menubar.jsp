@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="./resources/css/main.css">
+  <link rel="stylesheet" href="<%=contextPath %>/resources/css/main.css">
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -25,13 +25,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-	 <!-- HEADER -->
+	<!-- HEADER -->
   <header>
     <div class="inner">
 
-    <a href="<%=contextPath %>/" class="logo"><img src="<%=contextPath %>/resources/img/DsSports.png" alt="DS SPORTS"></a>
-    </div>
-
+    <a href="<%=contextPath %>/" class="logo"><img src="/Semi/resources/img/DsSports.png" alt="DS SPORTS"></a>
+    
     <!-- top navi -->
     <div class="top-navi">
       <ul class="navi">
@@ -43,7 +42,7 @@
     </div>
     <!-- input -->
     <div class="search">
-      <input type="text" placeholder="검색" style="font-size: 20px;">
+      <input id="search-button" type="text" placeholder="검색" style="font-size: 20px;">
       <div class="material-icons">search</div>
     </div>
     <!-- order -->
@@ -52,7 +51,7 @@
         <a href="#">
           <div class="material-symbols-outlined">
           shopping_cart
-          </div>
+        </div>
         </a>
       </div>
     <div id="favor">
@@ -63,7 +62,8 @@
       </a>
     </div>
   </div>
-      </header>
+</div>
+</header>
       <!-- navigator -->
       <div class="navigator">
         <ul id="navi">
