@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
     <%
     
-    
-    
     %>
 <!DOCTYPE html>
 <html>
@@ -25,7 +23,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<%@include file="/views/common/menubar.jsp"%>
+ <%@ include file="/views/common/menubar.jsp"%>
 
       <!--중간부터 끝-->
       <div class="middle-bottom">
@@ -39,9 +37,9 @@
         <!-- 공지사항 -->
         <div id="notice">공지사항
             <div id="content">
-              <li><a href="./notice.html">공지제목1</a></li>
-              <li><a href="./notice.html">공지제목2</a></li>
-              <li><a href="./notice.html">공지제목3</a></li>
+              <li><a href="<%=contextPath %>/views/semi/notice.jsp">공지제목1</a></li>
+              <li><a href="<%=contextPath %>/views/semi/notice.jsp">공지제목2</a></li>
+              <li><a href="<%=contextPath %>/views/semi/notice.jsp">공지제목3</a></li>
             </div>
         </div>
       </div>

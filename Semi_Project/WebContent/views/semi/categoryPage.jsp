@@ -27,7 +27,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-	<%@include file="/views/common/menubar.jsp"%>
+	 <%@ include file="/views/common/menubar.jsp"%>
 
   <div class="category">
     <ul id="top-cate">

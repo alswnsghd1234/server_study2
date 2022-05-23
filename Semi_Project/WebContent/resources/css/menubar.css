@@ -1,3 +1,4 @@
+
 /* common */
 
 body{
@@ -23,6 +24,7 @@ header .inner{
   width: 100%;
   height: 100%;
   margin:auto;
+  
 }
 header .inner .logo{
   height: 40px;
@@ -65,10 +67,9 @@ header .top-navi ul.navi li::before{
 }
 header .top-navi ul.navi li a{
   font-size: 16px;
-  
-  color: black;
   text-decoration-line: none;
   margin: 5px;
+  
 }
 header .top-navi ul.navi li a:hover{
   
@@ -121,27 +122,37 @@ header .order #favor a .material-symbols-outlined{
 }
 
 .navigator{
-  margin: 40px 0;
-  height: 10%;
+  margin-top: 40px;
+  height: 100%;
   width: 100%;
   position: relative;
 
 }
 #navi{
   list-style-type: none;
-            height: 100%;
+  height: 100%;
+  display:tabel-cell;
 }
 #navi>li{
 
+  /*방법 1 + #navi a{ transform : scale(1); 추가하기}*/
+  /* float: left; */
+  /* height: 100%;
+  width: 20%;
+  text-align: center; */
+
+  /*방법 2*/
   display: inline-block;
-  width: 15%;
+  width: 200px;
   height: 42px;
   text-align: center;
-margin: auto;
-  vertical-align: top;/*inline요소들의 수직정렬 기준*/
+  margin-right: 70px
+  ;/*inline요소들의 수직정렬 기준*/
   background-color: lightskyblue;
   border: 1px solid;
-  
+  margin-left: 20px;
+  vertical-align:top;
+  border-radius: 7%;
 }
 #navi a{
   /* border: 1px solid red; */
@@ -151,112 +162,54 @@ margin: auto;
   font-weight: bold;
   display: block;
   width: 100%;
+  height: inherit;
+  
   
 
   /* transform: scale(1); */
 }
 #navi a:hover{
-  font-size: 20px;
+  font-size: 24px;
   color: brown;
 }
-/*
 #navi>li>ul{
-  position: relative;
+  position: absolute;
+  
   list-style-type: none;
   padding: 0px;
-  font-size: 43px;
+  font-size: 40px;
   text-align: center;
-  display: block;
-  background-color:darkblue;
+  display: none;
+  width: inherit;
+  height: 300px;
+  margin-bottom: 30px;
+  
+}
+#navi>li>ul>li{
+  background-color: lightsteelblue;
+  border: 1px solid black;
+  margin: 10px 0;
+  border-radius: 5%;
 }
 #navi>li>ul a{
   
   font-size: 23px;
   margin: 30px 0;
   text-align: center;
-}
-#navi>li>ul a:hover{
-  font-size: 20px;
-  display : block;
+  
 }
 
-#navi>li>a:hover+ul {
+
+#navi>li>a:hover+ul{
   /* 평소에는 안보여지다가 마우스가 올라가는 순간 펼쳐지는 효과 부여 2단계 */
-  /* display : block; */
+  display : block;
  /* 메인메뉴에만 마우스가 올라갈 때 유지가 되므로 */
-/* }*/ 
 
-/* 첫번째 카테고리 나열 */
-.category{
-  
-  position: absolute;
-  width: 1200px;
-  height: 400px;
-  margin: 50px 0;
-  z-index: -1;
-  right: 120px;
 }
-.category ul{
-  
-  height: 50%;
+#navi>li>ul:hover{
+  display: block;
 }
-.category li{
-  display: inline-block;
-  
-  height: 100%;
-  width: 18%;
-  border: 1px solid black;
+#navi>li>img:hover{
+  display: block;
 }
-.category li>img{
-  height: inherit;
-}
-/* 두번째 카테고리 나열 */
-.category2{
-  
-  position: absolute;
-  width: 1400px;
-  height: 400px;
-  margin: 50px 0;
-  
-  margin: 40px;
-  right: 120px;
-}
-.category ul{
-  
-  height: 50%;
-}
-.category li{
-  display: inline-block;
-  
-  height: 100%;
-  width: 18%;
-  border: 1px solid black;
-}
-.category li>img{
-  height: inherit;
-}
-/* 세번째 카테고리 나열 */
-.category3{
-  
-  position: absolute;
-  width: 1400px;
-  height: 400px;
-  margin: 50px 0;
-  
-  margin: 40px;
-  right: 120px;
-}
-.category ul{
-  
-  height: 50%;
-}
-.category li{
-  display: inline-block;
-  
-  height: 100%;
-  width: 18%;
-  border: 1px solid black;
-}
-.category li>img{
-  height: inherit;
-}
+

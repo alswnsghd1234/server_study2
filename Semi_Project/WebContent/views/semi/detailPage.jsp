@@ -26,7 +26,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<%@include file="/views/common/menubar.jsp"%>
+<%@include file="/views/common/menubar2.jsp"%>
 
      <!-- 상품 디테일 헤더부분 -->
       <div class="detail-top">
@@ -60,9 +60,11 @@
           <div id="detail-top-right-bottom">
             <div id="buy-order">
             <button id="buy">구매하기</button>
-            <button id="order1">찜하기</button><br>
-            <button id="order2">장바구니</button>
-              <h2>상품 총금액 : 20,000원</h2>
+            <div class="order1"><button id="order11">찜하기</button></div>
+            <div class="order2"><button id="order22">장바구니</button></div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              
+              <h3 style="display: inline-block;" id="total">상품 총금액 : 20,000원</h3>
             </div>
           </div>
         </div>
@@ -70,15 +72,40 @@
 
       <div class="detail-middle">
         <div id="detail-button">
-          <button id="description">상품설명</button>
+          <button id="description" onclick="">상품설명</button>
           <button id="content">상품내용</button>
           <button id="reviews">상품리뷰</button>
           <button id="question">상품문의</button>
         </div>
         <div id="pr-description"></div>
         <div id="pr-content"></div>
-        <div id="pr-reviews"></div>
+        <div id="pr-reviews">
+          <div class="review-score">
+            <h3 style="display: inline-block;">사용자 리뷰 총 평점수&nbsp;&nbsp; ★★★★☆ &nbsp;&nbsp;4.7</h3>
+          </div>
+          <div id="stars-view">
+          
+            <h4>별점 개수별로 조회</h2>
+            <select name="star" id="star">
+              <option value="5">★★★★★</option>
+              <option value="4">★★★★☆</option>
+              <option value="3">★★★☆☆</option>
+              <option value="2">★★☆☆☆</option>
+              <option value="1">★☆☆☆☆</option>
+            </select>
+          </div>
+        </div>
         <div id="pr-question"></div>
       </div>
+
+      <script>
+        $('#content').click(function(){
+          let divv = document.getElementsByTagName("div");
+          for(let i=0;i<=divv.length;i++){
+            divv[i].style.backgroundColor="red";
+            divv[i].innerHTML="하이<br>루";
+          }
+        });
+      </script>
 </body>
 </html>

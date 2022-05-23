@@ -16,7 +16,6 @@ INDEX VERSION 1.131+C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.ec
 1528678675.index
 486488430.index
 4036149228.index
-2012702617.index
 3721565643.index
 1747824203.index
 3550418391.index
