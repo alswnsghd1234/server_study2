@@ -7,24 +7,23 @@ public class Product {
 	private String proImage;//	PRO_IMAGE	VARCHAR2(100 BYTE)
 	private String proMaker;//	PRO_MAKER	VARCHAR2(100 BYTE)
 	private String proDes;//	PRO_DES	VARCHAR2(1000 BYTE)
-	private String cateBno;//	CATE_BNO	NUMBER
-	private String cateSno;//	CATE_SNO	NUMBER
+	private int cateBno;//	CATE_BNO	NUMBER
+	private int cateSno;//	CATE_SNO	NUMBER
 	private String proSize;//	PRO_SIZE	VARCHAR2(10 BYTE)
 	private int proPrice;//	PRO_PRICE	NUMBER
 	private int proAmount;//	PRO_AMOUNT	NUMBER
 	private String proLevel;//	PRO_LEVEL	NUMBER
 	private int deliveryPrice;//	DELIVERY_PRICE	NUMBER
-	private int proCount;//	PRO_COUNT	NUMBER
-	private int sell;//	SELL	NUMBER
 	private String status;//	PRO_STATUS	CHAR(2 BYTE)
+	private String sellstat;
 	
 	public Product() {
 		super();
 	}
 
 	public Product(int proNo, String proName, String proCode, String proImage, String proMaker, String proDes,
-			String cateBno, String cateSno, String proSize, int proPrice, int proAmount, String proLevel,
-			int deliveryPrice, int proCount, int sell, String status) {
+			int cateBno, int cateSno, String proSize, int proPrice, int proAmount, String proLevel, int deliveryPrice,
+			String status, String sellstat) {
 		super();
 		this.proNo = proNo;
 		this.proName = proName;
@@ -39,9 +38,21 @@ public class Product {
 		this.proAmount = proAmount;
 		this.proLevel = proLevel;
 		this.deliveryPrice = deliveryPrice;
-		this.proCount = proCount;
-		this.sell = sell;
 		this.status = status;
+		this.sellstat = sellstat;
+	}
+
+	public Product(int proNo, String proName, String proCode, String proMaker, int proPrice, int proAmount,
+			String status, String sellstat) {
+		super();
+		this.proNo = proNo;
+		this.proName = proName;
+		this.proCode = proCode;
+		this.proMaker = proMaker;
+		this.proPrice = proPrice;
+		this.proAmount = proAmount;
+		this.status = status;
+		this.sellstat = sellstat;
 	}
 
 	public int getProNo() {
@@ -92,19 +103,19 @@ public class Product {
 		this.proDes = proDes;
 	}
 
-	public String getCateBno() {
+	public int getCateBno() {
 		return cateBno;
 	}
 
-	public void setCateBno(String cateBno) {
+	public void setCateBno(int cateBno) {
 		this.cateBno = cateBno;
 	}
 
-	public String getCateSno() {
+	public int getCateSno() {
 		return cateSno;
 	}
 
-	public void setCateSno(String cateSno) {
+	public void setCateSno(int cateSno) {
 		this.cateSno = cateSno;
 	}
 
@@ -148,22 +159,6 @@ public class Product {
 		this.deliveryPrice = deliveryPrice;
 	}
 
-	public int getProCount() {
-		return proCount;
-	}
-
-	public void setProCount(int proCount) {
-		this.proCount = proCount;
-	}
-
-	public int getSell() {
-		return sell;
-	}
-
-	public void setSell(int sell) {
-		this.sell = sell;
-	}
-
 	public String getStatus() {
 		return status;
 	}
@@ -172,32 +167,23 @@ public class Product {
 		this.status = status;
 	}
 
+	public String getSellstat() {
+		return sellstat;
+	}
+
+	public void setSellstat(String sellstat) {
+		this.sellstat = sellstat;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [proNo=" + proNo + ", proName=" + proName + ", proCode=" + proCode + ", proImage=" + proImage
 				+ ", proMaker=" + proMaker + ", proDes=" + proDes + ", cateBno=" + cateBno + ", cateSno=" + cateSno
 				+ ", proSize=" + proSize + ", proPrice=" + proPrice + ", proAmount=" + proAmount + ", proLevel="
-				+ proLevel + ", deliveryPrice=" + deliveryPrice + ", proCount=" + proCount + ", sell=" + sell
-				+ ", status=" + status + "]";
+				+ proLevel + ", deliveryPrice=" + deliveryPrice + ", status=" + status + ", sellstat=" + sellstat + "]";
 	}
-	
-	
-	
-	
 
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 }

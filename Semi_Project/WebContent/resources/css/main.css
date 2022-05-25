@@ -1,55 +1,67 @@
 .middle-bottom{
   width: 100%;
   height: 700px;
-  position: relative;
+  position: absolute;
   margin: 0 50px;
   
 }
 .middle-bottom .middle{
   width: 100%;
   height: 300px;
-  position: absolute;
+  position: relative;
   left: 50px;
   z-index: -1;
 }
 .middle #pop-pr{
-  width: 70%;
+  width: 40%;
   height: 300px;
   display: inline-block;
   z-index: -1;
 }
 .middle #pop-pr img{
-  padding: 0 40px;
+  padding: 30px 70px;
   width: 100%;
-  height: inherit;
+  height: 300px;
   z-index: -1;
 }
 .middle #notice{
-  background-color: saddlebrown;
-  width: 10%;
-  right: 250px;
-  height: 300px;
+  
+  width: 8%;
+  right: 150px;
+  height: 400px;
   text-align: center;
   font-size: 24px;
-  position: absolute;
+  position: fixed;
   display: inline-block;
-  z-index: 1;
+  z-index: 2;
+  top: 450px;
+  border: 1px solid black;
 }
 .middle #notice #content{
   background-color: aliceblue;
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: 300px;
   text-align: center;
+  border-top:  1px solid black;
+  text-align: center;
+  display: inline-block;
+  right: 0px;
+  
   
 }
 .middle #notice #content li{
   list-style: none;
   font-size: 16px;
-  width: 33%;
-  text-align: center;
+  width: 100%;
   height: 33%;
-  width: 23%;
+  
+  
+}
+.middle #notice a{
+  z-index: 2;
+  text-align: center;
+  text-decoration: none;
 }
 
 .middle-bottom .pop-gym{

@@ -27,3 +27,5 @@ C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\j
 \Semi_Project\src
 C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1857946050.index
 \JSP_Project\src
+C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1704160718.index
+\Semi_Project\src

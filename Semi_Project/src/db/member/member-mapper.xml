@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+	<entry key="loginMember">
+		SELECT *
+		FROM MEMBER
+		WHERE USER_ID= ?
+		AND USER_PWD= ?
+		AND STATUS ='Y'
+	</entry>
+
+	<entry key="insertMember">
+		INSERT INTO MEMBER(USER_NO,
+						   USER_ID,
+						   USER_PWD,
+						   USER_NAME,
+						   PHONE,
+						   EMAIL,
+						   ADDRESS,
+						   INTEREST)
+						   VALUES
+						   (SEQ_UNO.NEXTVAL,
+						   ?,
+						   ?,
+						   ?,
+						   ?,
+						   ?,
+						   ?,
+						   ?)
+	</entry>
+	
+	<entry key="updateMember">
+		UPDATE MEMBER
+		SET USER_NAME = ?
+    		,PHONE = ?
+    		,EMAIL = ?
+    		,ADDRESS = ?
+    		,INTEREST = ?
+    		,MODIFY_DATE = SYSDATE
+		WHERE USER_ID = ?
+	</entry>
+	
+	<entry key="selectMember">
+		SELECT * 
+		FROM MEMBER 
+		WHERE USER_ID = ? 
+		AND STATUS='Y'
+	</entry>
+	
+	<entry key="updatePwdMember">
+		UPDATE MEMBER
+		SET USER_PWD = ?		<!--변경될 비밀번호(updatePwd)  -->
+    		,MODIFY_DATE = SYSDATE
+		WHERE USER_ID = ?			<!--아이디 userId  -->
+		AND USER_PWD = ?    		<!-- 현재 비밀번호(userPwd) -->
+	</entry>
+	
+	<entry key="deleteMember">
+		UPDATE MEMBER
+		SET STATUS='N'
+			,MODIFY_DATE = SYSDATE
+		WHERE USER_ID = ?
+		AND USER_PWD = ?
+	</entry>
+	
+	<entry key="idCheck">
+		SELECT COUNT(*) count 
+		FROM MEMBER 
+		WHERE USER_ID = ?
+	</entry>
+	
+
+</properties>

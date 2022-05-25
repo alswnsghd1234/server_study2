@@ -34,15 +34,18 @@
         <div id="pop-pr">
         <img src="https://i.ytimg.com/vi/lY3__IHES6A/maxresdefault.jpg" alt="pop-pr">
         </div>
+        
         <!-- 공지사항 -->
-        <div id="notice">공지사항
+        <div id="notice">
+          <h4>공지사항</h4>
             <div id="content">
-              <li><a href="<%=contextPath %>/views/semi/notice.jsp">공지제목1</a></li>
-              <li><a href="<%=contextPath %>/views/semi/notice.jsp">공지제목2</a></li>
-              <li><a href="<%=contextPath %>/views/semi/notice.jsp">공지제목3</a></li>
+              <li><a href="<%=contextPath %>/list.no"><h5>공지제목1</h5></a></li>
+              <li><a href="<%=contextPath %>/list.no"><h5>공지제목2</h5></a></li>
+              <li><a href="<%=contextPath %>/list.no"><h5>공지제목3</h5></a></li>
             </div>
         </div>
       </div>
+    
       <!-- 인기상품 + 공지 영역 여기까지-->
       <!-- 인기 헬스장-->
       <div class="pop-gym">
@@ -59,6 +62,7 @@
           <textarea name="gym1-text" id="gym1-text" cols="30" rows="10"></textarea>
         </div>
       </div>
+    
       <!-- 인기 헬스장 여기까지-->
       <div id="footer">
         <div id="footer_1">
@@ -78,5 +82,6 @@
             <p id="p2">Copyright © 1998-2022 KH Information Educational Institute All Right Reserved</p>
         </div>
     </div>
+  </div>
 </body>
 </html>
