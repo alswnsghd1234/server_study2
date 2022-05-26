@@ -8,7 +8,7 @@
 	//loginUser가 null이 아니면 로그인 후 화면을 보여주면 된다.
 	
 	String alertMsg =(String)session.getAttribute("alertMsg");
-	
+
     %>
 <!DOCTYPE html>
 <html>

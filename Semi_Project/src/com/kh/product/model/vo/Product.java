@@ -20,6 +20,20 @@ public class Product {
 	public Product() {
 		super();
 	}
+	
+	
+
+	public Product(int proNo, String proName,int proPrice,String proImage, int cateBno, int cateSno) {
+		super();
+		this.proNo = proNo;
+		this.proName = proName;
+		this.proPrice = proPrice;
+		this.proImage = proImage;
+		this.cateBno = cateBno;
+		this.cateSno = cateSno;
+	}
+
+
 
 	public Product(int proNo, String proName, String proCode, String proImage, String proMaker, String proDes,
 			int cateBno, int cateSno, String proSize, int proPrice, int proAmount, String proLevel, int deliveryPrice,

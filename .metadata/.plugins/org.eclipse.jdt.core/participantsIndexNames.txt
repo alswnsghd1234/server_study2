@@ -7,6 +7,8 @@ C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\j
 \Ajax_Projects\src
 C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3728457815.index
 \JSP_Project\src
+C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1643237431.index
+\Semi_Project\src
 C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3289315462.index
 \JSP_Project\src
 C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1943729604.index
@@ -21,6 +23,8 @@ C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\j
 \Ajax_Projects\src
 C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1013465975.index
 \Semi_Project\src
+C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1945129754.index
+\Semi_Project\src
 C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\278437340.index
 \Semi_Project\src
 C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3362936925.index
@@ -28,4 +32,6 @@ C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\j
 C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1857946050.index
 \JSP_Project\src
 C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1704160718.index
+\Semi_Project\src
+C:\Users\min\AMI\server_workspace2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\348753033.index
 \Semi_Project\src

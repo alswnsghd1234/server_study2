@@ -1,27 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 
-
 <properties>
-	<entry key="selectproduct">
-		SELECT NOTICE_NO
-	        ,NOTICE_TITLE
-	        ,NOTICE_CONTENT
-	        ,USER_ID
-	        ,CREATE_DATE
-	  FROM NOTICE N
-	  JOIN MEMBER ON (NOTICE_WRITER=USER_NO)
-	  WHERE NOTICE_NO = ?
-	  AND N.STATUS = 'Y'
-	
-	
-	
-	
+	<entry key="selectsoccer">
+		SELECT PRO_NO
+	        ,PRO_NAME
+	        ,PRO_PRICE
+	        ,PRO_IMAGE
+	        ,CATE_BNO
+	        ,CATE_SNO
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =10
+
 	</entry>
-
-
-
 	
+	<entry key="selectboling">
+		SELECT PRO_NO
+	        ,PRO_NAME
+	        ,PRO_PRICE
+	        ,PRO_IMAGE
+	        ,CATE_BNO
+	        ,CATE_SNO
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =20
 
+	</entry>
+	
+	<entry key="selecthealth">
+		SELECT PRO_NO
+	        ,PRO_NAME
+	        ,PRO_PRICE
+	        ,PRO_IMAGE
+	        ,CATE_BNO
+	        ,CATE_SNO
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =30
 
+	</entry>
+	
+	<entry key="selectcycle">
+		SELECT PRO_NO
+	        ,PRO_NAME
+	        ,PRO_PRICE
+	        ,PRO_IMAGE
+	        ,CATE_BNO
+	        ,CATE_SNO
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =40
+
+	</entry>
 </properties>

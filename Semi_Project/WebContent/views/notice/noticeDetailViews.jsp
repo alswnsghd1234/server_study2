@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList,com.kh.notice.model.vo.Notice"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList,com.kh.notice.model.vo.Notice,com.kh.member_2.model.vo.MemberUser"%>
     <%
     Notice notice = (Notice)request.getAttribute("notice");
+    MemberUser loginUser = null;
+    int loginN = -1;
+  	if(session.getAttribute("loginN")!=null) loginN = (int)session.getAttribute("loginN");
+  	if(session.getAttribute("loginUser")!=null) loginUser= (MemberUser)session.getAttribute("loginUser");
+
     %>
 <!DOCTYPE html>
 <html>
@@ -42,11 +47,19 @@
         <div align="center">
             <a href="<%=contextPath%>/list.no" class="btn btn-success">목록으로 가기</a> <br>
 			<br>
-<%--             <%if(loginUser!=null && loginUser.getUserId().equals(notice.getNoticeWriter())){%> --%>
-<%--             <a href="<%=contextPath%>/updateForm.no?nno=<%=notice.getNoticeNo()%>" class="btn btn-warning">수정하기</a>  --%>
-<%--             <a href="<%=contextPath%>/delete.no?nno=<%=notice.getNoticeNo()%>" class="btn btn-danger">삭제하기</a> <br> --%>
-<%--             <%}%> --%>
+            <%if(loginUser!=null && loginUser.getUserId().equals(notice.getNoticeWriter())){%>
+            <a href="<%=contextPath%>/updateForm.no?nno=<%=notice.getNoticeNo()%>" class="btn btn-warning">수정하기</a> 
+            <a href="<%=contextPath%>/delete.no?nno=<%=notice.getNoticeNo()%>" class="btn btn-danger">삭제하기</a> <br>
+            <%}%>
 			
+        </div>
+        
+        <div align="center">
+         <a href="<%=contextPath%>/list.no" class="btn btn-success">목록으로 가기</a> <br>
+         <br>
+         <%if(loginUser != null && loginUser.getUserId().equals(notice.getNoticeWriter())){ %>
+         <a href="<%=contextPath%>/updateForm.no?nno=<%=notice.getNoticeNo()%>"class="btn btn-warning">수정하기</a> 
+        
         </div>
 
     </div>

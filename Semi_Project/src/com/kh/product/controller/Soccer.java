@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.product.model.service.ProductService;
+import com.kh.product.model.service.SoccerService;
 import com.kh.product.model.vo.Product;
 
 /**
  * Servlet implementation class Soccer
  */
-@WebServlet("/soccer.pa")
+@WebServlet("/soccer.pg")
 public class Soccer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,9 +31,11 @@ public class Soccer extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		ArrayList<Product> list = new ProductService().selectProduct();
-	
+		
+		ArrayList<Product> list = new SoccerService().selectProduct();
+		request.setAttribute("list", list);
+		
+		request.getRequestDispatcher("/views/semi/categoryPage.jsp").forward(request, response);
 	}
 
 	/**

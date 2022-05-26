@@ -36,6 +36,7 @@ public class NoticeListController extends HttpServlet {
 		
 		//응답페이지 : 공지사항 리스트 페이지 (noticeListView.jsp)
 		request.setAttribute("list", list);
+		System.out.println(list);
 		request.getRequestDispatcher("/views/notice/noticeListView.jsp").forward(request, response);
 		
 		
