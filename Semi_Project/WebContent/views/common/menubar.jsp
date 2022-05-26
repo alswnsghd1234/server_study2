@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList,com.kh.product.model.vo.Product,com.kh.member_2.model.vo.MemberUser"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList,com.kh.product.model.vo.Product,com.kh.member.model.vo.MemberUser"%>
 	<% String contextPath = request.getContextPath();
 	//loginUser가 null이면 로그인전
 	//loginUser가 null이 아니면 로그인 후 화면을 보여주면 된다.
 	ArrayList<Product> pr = (ArrayList<Product>)request.getAttribute("list");
-  MemberUser loginUser = null;
-  int loginN = -1;
-	if(session.getAttribute("loginN")!=null) loginN = (int)session.getAttribute("loginN");
-	if(session.getAttribute("loginUser")!=null) loginUser= (MemberUser)session.getAttribute("loginUser");
+	MemberUser loginUser = (MemberUser)session.getAttribute("loginUser");
+  
 	String alertMsg =(String)session.getAttribute("alertMsg");
 	%>
 <!DOCTYPE html>
@@ -31,6 +29,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+
+
   	<!-- HEADER -->
     <header>
   
@@ -42,7 +42,7 @@
       <!-- top navi -->
       <div class="top-navi">
         <ul class="navi">
-          <li><a href="#">로그인</a></li>
+          <li><a href="/Semi/views/common/login.jsp">로그인</a></li>
           <li><a href="#">회원가입</a></li>
           <li><a href="#">마이페이지</a></li>
           <li><a href="#">고객센터</a></li>
