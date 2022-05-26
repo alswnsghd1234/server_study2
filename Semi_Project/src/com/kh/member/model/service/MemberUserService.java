@@ -1,20 +1,20 @@
-package com.kh.member_2.model.service;
+package com.kh.member.model.service;
 
 import static com.kh.common.JDBCTemplate.close;
 import static com.kh.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 
-import com.kh.member_2.model.dao.MemberUserDao;
-import com.kh.member_2.model.vo.MemberUser;
+import com.kh.member.model.dao.MemberUserDao;
+import com.kh.member.model.vo.MemberUser;
 public class MemberUserService {
 
-	public MemberUser loginUser(String userId, String userPw) {
+	public MemberUser loginMember(String userId, String userPwd) {
 		Connection conn = getConnection();
 		
-		MemberUser mu = new MemberUserDao().loginUser(conn,userId,userPw);
+		MemberUser m = new MemberUserDao().loginUser(conn, userId, userPwd);
 		close(conn);
-		return mu;
+		return m;
 	}
 
 }

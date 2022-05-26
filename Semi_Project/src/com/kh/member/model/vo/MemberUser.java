@@ -1,4 +1,4 @@
-package com.kh.member_2.model.vo;
+package com.kh.member.model.vo;
 
 import java.sql.Date;
 
@@ -46,6 +46,24 @@ public class MemberUser {
 		this.userNName = userNName;
 		this.u_status = u_status;
 		this.banDate = banDate;
+	}
+	
+	public MemberUser(int userNo, String userId, String userPw, String userName, String userNName, Date userBirth,
+			String gender, String email, String phone, String address, Date enterdate, String u_status, int userRPC) {
+		super();
+		this.userNo = userNo;
+		this.userId = userId;
+		this.userPw = userPw;
+		this.userName = userName;
+		this.userNName = userNName;
+		this.userBirth = userBirth;
+		this.gender = gender;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.enterdate = enterdate;
+		this.u_status = u_status;
+		this.userRPC = userRPC;
 	}
 	public int getUserNo() {
 		return userNo;

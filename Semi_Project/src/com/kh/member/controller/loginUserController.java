@@ -1,7 +1,8 @@
-package com.kh.member_2.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.member_2.model.service.MemberUserService;
-import com.kh.member_2.model.vo.MemberUser;
+import com.kh.member.model.vo.MemberUser;
+import com.kh.member.model.service.MemberUserService;
 
 /**
  * Servlet implementation class loginUserController
@@ -31,28 +32,27 @@ public class loginUserController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		if(request.getParameter("logout")==null) {
+		
 		request.setCharacterEncoding("UTF-8");
+		
 		String userId = request.getParameter("userId");
-		String userPw = request.getParameter("userPw");
-		MemberUser mu = new MemberUserService().loginUser(userId, userPw);
-
-		if(mu!=null) {
-			session.setAttribute("loginN", -1);
-			session.setAttribute("loginUser", mu);
-			response.sendRedirect("/Semi/views/semi/main.jsp");
+		String userPwd = request.getParameter("userPwd");
+		
+		MemberUser loginUser = new MemberUserService().loginMember(userId,userPwd);
+		
+		if(loginUser==null) {
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			view.forward(request, response);
+					
 		}else {
-			session.setAttribute("loginN", 0);
-			response.sendRedirect("/Semi/views/common/login.jsp");
-		}
-		}else {
-			request.getSession().removeAttribute("loginUser");
-			session.setAttribute("loginN", 1);
-			response.sendRedirect("/Semi/views/semi/main.jsp");
+			HttpSession session = request.getSession();
+			session.setAttribute("loginUser", loginUser);
+			response.sendRedirect(request.getContextPath());
+			
 		}
 		
 	}
+		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

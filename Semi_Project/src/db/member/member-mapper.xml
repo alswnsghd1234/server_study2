@@ -2,23 +2,29 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 
 <properties>
-	<entry key="loginMember">
+	<entry key="loginMemberUser">
 		SELECT *
 		FROM MEMBER
 		WHERE USER_ID= ?
-		AND USER_PWD= ?
+		AND USER_PW= ?
 		AND STATUS ='Y'
 	</entry>
 
 	<entry key="insertMember">
-		INSERT INTO MEMBER(USER_NO,
+		INSERT INTO MEMBER((USER_NO,
 						   USER_ID,
-						   USER_PWD,
+						   USER_PW,
 						   USER_NAME,
-						   PHONE,
+						   USER_NNAME,
+						   USER_BIRTH,
+						   GENDER,
 						   EMAIL,
+						   PHONE,
 						   ADDRESS,
-						   INTEREST)
+						   ENTERDATE,
+						   U_STATUS,
+						   USER_RPC
+						   )
 						   VALUES
 						   (SEQ_UNO.NEXTVAL,
 						   ?,
@@ -27,7 +33,10 @@
 						   ?,
 						   ?,
 						   ?,
-						   ?)
+						   ?,
+						   ?,
+						   ?,
+						   ?,)
 	</entry>
 	
 	<entry key="updateMember">

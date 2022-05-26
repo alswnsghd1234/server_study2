@@ -1,5 +1,6 @@
-package com.kh.member_2.model.dao;
+package com.kh.member.model.dao;
 import static com.kh.common.JDBCTemplate.*;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -7,14 +8,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
-
-import com.kh.memManage.model.dao.memManageDao;
-import com.kh.member_2.model.vo.MemberUser;
+import com.kh.member.model.vo.MemberUser;
 
 public class MemberUserDao {
+	
 	private Properties prop = new Properties();
+	
 	public MemberUserDao() {
-		String fileName = memManageDao.class.getResource("/db/memberUser/memberUser-mapper.xml").getPath();
+		String fileName = MemberUserDao.class.getResource("/db/member/member-mapper.xml").getPath();
 		try {
 			prop.loadFromXML(new FileInputStream(fileName));
 		} catch (IOException e) {
@@ -27,7 +28,7 @@ public class MemberUserDao {
 	public MemberUser loginUser(Connection conn, String userId, String userPw) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		MemberUser mu = null;
+		MemberUser m = null;
 		String sql = prop.getProperty("loginMemberUser");
 		
 		try {
@@ -38,10 +39,19 @@ public class MemberUserDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				mu = new MemberUser(rset.getInt("USER_NO"),
-						rset.getString("USER_NNAME"),
-						rset.getString("U_STATUS"),
-						rset.getDate("BAN_DATE"));
+				m = new MemberUser(rset.getInt("USER_NO")
+						   ,rset.getString("USER_ID")
+						   ,rset.getString("USER_PWD")
+						   ,rset.getString("USER_NAME")
+						   ,rset.getString("USER_NNAME")
+						   ,rset.getDate("USER_BIRTH")
+						   ,rset.getString("GENDER")
+						   ,rset.getString("EMAIL")
+						   ,rset.getString("PHONE")
+						   ,rset.getString("ADDRESS")
+						   ,rset.getDate("ENTERDATE")
+						   ,rset.getString("U_STATUS")
+						   ,rset.getInt("USER_RPC"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -50,7 +60,7 @@ public class MemberUserDao {
 			close(rset);
 			close(pstmt);
 		}
-		return mu;
+		return m;
 	}
 
 }
