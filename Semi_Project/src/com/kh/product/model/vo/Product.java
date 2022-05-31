@@ -1,5 +1,7 @@
 package com.kh.product.model.vo;
 
+import java.sql.Date;
+
 public class Product {
 	private int proNo;//	PRO_NO	NUMBER
 	private String proName;//	PRO_NAME	VARCHAR2(100 BYTE)
@@ -68,6 +70,25 @@ public class Product {
 		this.status = status;
 		this.sellstat = sellstat;
 	}
+
+	
+	
+	
+
+
+	public Product(int proNo, String proName, String proImage, String proMaker, String proDes, int proPrice,
+			int proAmount) {
+		super();
+		this.proNo = proNo;
+		this.proName = proName;
+		this.proImage = proImage;
+		this.proMaker = proMaker;
+		this.proDes = proDes;
+		this.proPrice = proPrice;
+		this.proAmount = proAmount;
+	}
+
+
 
 	public int getProNo() {
 		return proNo;

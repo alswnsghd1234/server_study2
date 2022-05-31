@@ -33,18 +33,14 @@
 
       <br>
       <h1 align="center" style="font-size: 45px;">공지사항</h1>
-      <div class="notice">
+      <div class="big-notice">
             <%if(list.isEmpty()){%>
        		<tr>
        			<td colspan="5">존재하는 공지사항이 없습니다.</td>
        		</tr>
             <%}else{%>
             <%for(Notice n : list) {%>
-        <div id="notice1"><%=n.getNoticeTitle()%></div><hr>
-		<div id="notice2"><%=n.getNoticeTitle()%></div><hr>
-		<div id="notice3"><%=n.getNoticeTitle()%></div><hr>
-		<div id="notice4"><%=n.getNoticeTitle()%></div><hr>
-		<div id="notice5"><%=n.getNoticeTitle()%></div><hr>
+        <div class="notice" id="notice1"><%=n.getNoticeTitle()%>/list.bo</div><hr>
 		<%}%>
           <%} %>
       </div>
@@ -60,11 +56,11 @@
     <script>
         $(function(){
 
-            $(".table-hover>tbody>tr").click(function(){
+            $(".notice").click(function(){
                 // console.log("클릭");
                 //클릭했을때 해당하는 글의 번호를 넘겨줘야 해당 글의 정보를 알수있음(식별자)
                 //해당 tr에 자손 td에 있는 text를 알고싶다
-                var nno = $(this).children().eq(0).text(); //공지사항글 번호
+                var nno = $(this).siblings().eq(0).text(); //공지사항글 번호
                 // console.log(nno);
                 //요청할 url?키=벨류&키=벨류 ....
                 //물음표 뒤에 오는 내용을 쿼리스트링이라고 한다. ->직접 만들어서 넘겨야함

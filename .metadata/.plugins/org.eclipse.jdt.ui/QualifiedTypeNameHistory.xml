@@ -3,7 +3,6 @@
 <fullyQualifiedTypeName name="java.sql.DriverManager"/>
 <fullyQualifiedTypeName name="java.sql.Statement"/>
 <fullyQualifiedTypeName name="com.kh.member.model.dao.MemberDao"/>
-<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="com.kh.member.model.service.MemberService"/>
 <fullyQualifiedTypeName name="com.kh.member.model.vo.Member"/>
@@ -24,4 +23,10 @@
 <fullyQualifiedTypeName name="com.kh.product.model.dao.ProductDao"/>
 <fullyQualifiedTypeName name="com.kh.product.model.vo.Product"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="com.kh.member.model.vo.MemberUser"/>
+<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+<fullyQualifiedTypeName name="com.kh.common.PageInfo"/>
+<fullyQualifiedTypeName name="com.kh.product.model.dao.BolingDao"/>
+<fullyQualifiedTypeName name="com.kh.product.model.service.BolingService"/>
+<fullyQualifiedTypeName name="com.kh.product.model.service.Soccer.SoccerService"/>
 </qualifiedTypeNameHistroy>

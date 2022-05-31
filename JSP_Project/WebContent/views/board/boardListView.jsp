@@ -70,31 +70,7 @@
                 	<%} %>
             	<%} %>
             
-                <!-- <tr>
-                    <td>5</td>
-                    <td>운동</td>
-                    <td>오늘의 운동일지</td>
-                    <td>김헬스</td>
-                    <td>2</td>
-                    <td>2021-01-01</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>게임</td>
-                    <td>와 저 잘한듯</td>
-                    <td>김프로준비생</td>
-                    <td>5</td>
-                    <td>2022-09-08</td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>요리</td>
-                    <td>자취밥상 꿀팁</td>
-                    <td>자취10년차</td>
-                    <td>15</td>
-                    <td>2022-10-05</td>
-                </tr> -->
-
+              
             </tbody>
 
         </table>
@@ -139,16 +115,6 @@
             <button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=currentPage+1%>'">&gt;</button>
        		<%} %>
        
-        <!-- <button>1</button>
-	        <button>2</button>
-	        <button>3</button>
-	        <button>4</button>
-	        <button>5</button>
-	        <button>6</button>
-	        <button>7</button>
-	        <button>8</button>
-	        <button>9</button>
-	        <button>10</button> -->
         </div>
     </div>
 

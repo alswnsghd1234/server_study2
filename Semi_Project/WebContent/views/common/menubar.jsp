@@ -5,7 +5,7 @@
 	//loginUser가 null이 아니면 로그인 후 화면을 보여주면 된다.
 	ArrayList<Product> pr = (ArrayList<Product>)request.getAttribute("list");
 	MemberUser loginUser = (MemberUser)session.getAttribute("loginUser");
-  
+	
 	String alertMsg =(String)session.getAttribute("alertMsg");
 	%>
 <!DOCTYPE html>
@@ -75,32 +75,32 @@
       <!-- navigator -->
       <div class="navigator">
         <ul id="navi">
-          <li class="menu"><a href="<%=contextPath%>/soccer.pg">축구</a>
+          <li class="menu"><a href="<%=contextPath%>/soccer.pg?cpage=1" class="soccer">축구</a>
             <ul>
-                <li><a href="<%=contextPath%>/soccer.pg">축구공</a></li>
-                <li><a href="<%=contextPath %>/soccer.pg">축구화</a></li>
-                <li><a href="<%=contextPath %>/soccer.pg">보호장비</a></li>
+                <li ><a href="<%=contextPath%>/soccertp.pg?cpage=1" class="soccer1">축구공</a></li>
+                <li><a href="<%=contextPath %>/soccermd.pg?cpage=1" class="soccer2">축구화</a></li>
+                <li><a href="<%=contextPath %>/soccerbt.pg?cpage=1" class="soccer3">보호장비</a></li>
             </ul>
           </li>
-          <li><a href="<%=contextPath %>/boling.pg">볼링</a>
+          <li><a href="<%=contextPath %>/boling.pg?cpage=1" class="boling">볼링</a>
             <ul>
-                <li><a href="<%=contextPath %>/boling.pg">볼링공</a></li>
-                <li><a href="<%=contextPath %>/boling.pg">볼링화</a></li>
-                <li><a href="<%=contextPath %>/boling.pg">보호장비</a></li>
+                <li><a href="<%=contextPath %>/boling.pg?cpage=1&tp=21" class="boling1">볼링공</a></li>
+                <li><a href="<%=contextPath %>/boling.pg?cpage=1&tp=22" class="boling2">볼링화</a></li>
+                <li><a href="<%=contextPath %>/boling.pg?cpage=1&tp=23" class="boling3">보호장비</a></li>
             </ul>
           </li>
-          <li><a href="<%=contextPath %>/health.pg">헬스</a>
+          <li><a href="<%=contextPath %>/health.pg?cpage=1" class="health">헬스</a>
             <ul>
-                <li><a href="<%=contextPath %>/health.pg">스트랩</a></li>
-                <li><a href="<%=contextPath %>/health.pg">리프팅벨트</a></li>
-                <li><a href="<%=contextPath %>/health.pg">보호대</a></li>
+                <li><a href="<%=contextPath %>/health.pg?cpage=1&tp=31" class="health1">스트랩</a></li>
+                <li><a href="<%=contextPath %>/health.pg?cpage=1&tp=32" class="health2">리프팅벨트</a></li>
+                <li><a href="<%=contextPath %>/health.pg?cpage=1&tp=33" class="health3">보호대</a></li>
             </ul>
           </li>
-          <li><a href="<%=contextPath %>/cycle.pg">자전거</a>
+          <li><a href="<%=contextPath %>/cycle.pg?cpage=1" class="cycle">자전거</a>
             <ul>
-                <li><a href="<%=contextPath %>/cycle.pg">자전거</a></li>
-                <li><a href="<%=contextPath %>/cycle.pg">LED전등</a></li>
-                <li><a href="<%=contextPath %>/cycle.pg">보호장비</a></li>
+                <li><a href="<%=contextPath %>/cycle.pg?cpage=1&tp=41" class="cycle1">자전거</a></li>
+                <li><a href="<%=contextPath %>/cycle.pg?cpage=1&tp=42" class="cycle2">LED전등</a></li>
+                <li><a href="<%=contextPath %>/cycle.pg?cpage=1&tp=43" class="cycle3">보호장비</a></li>
             </ul>
           </li>
           <li><a href="#">할인판매</a>
@@ -110,6 +110,9 @@
           
         </ul>
       </div>
+
+
+      
 
 </body>
 </html>

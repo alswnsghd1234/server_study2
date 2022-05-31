@@ -18,10 +18,11 @@ public class Notice {
 	
 	
 
-	public Notice(int noticeNo, String noticeTitle, String noticeWriter, int count, Date createDate) {
+	public Notice(int noticeNo, String noticeTitle,String noticeWriter,String noticeContent, int count, Date createDate) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
+		this.noticeContent = noticeContent;
 		this.noticeWriter = noticeWriter;
 		this.count = count;
 		this.createDate = createDate;
@@ -51,6 +52,10 @@ public class Notice {
 		this.noticeWriter = noticeWriter;
 		this.createDate = createDate;
 	}
+
+	
+
+
 
 
 

@@ -1,6 +1,7 @@
 package com.kh.notice.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,13 +33,16 @@ public class NoticeInsertController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
-		
+		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		String userNo = request.getParameter("userNo");
+		String noticeWriter = request.getParameter("noticeWriter");
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
+		int count =  Integer.parseInt(request.getParameter("count"));
+		Date createDate = Integer.parseDate(request.getParameter("createDate");
 		
 		//방법 1) 매개변수 생성자 만들어서 해당 위치에 값 잘 넣기
-		Notice n = new Notice(noticeTitle,noticeContent,userNo);
+		Notice n = new Notice(noticeNo,noticeTitle,noticeWriter,noticeContent,count,createDate);
 		
 		//방법2) 매개변수 생성자는 매개변수 위치 신경써야하니 헷갈릴수 있다 setter메소드 사용해서 넣기
 //		Notice n = new Notice();

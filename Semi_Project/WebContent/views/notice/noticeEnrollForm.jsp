@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.member.model.vo.MemberUser"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +29,7 @@
         <div class="outer">
             <br> <h2 align="center">공지사항 작성하기</h2>
                 <form id="enrollForm" action="<%=contextPath%>/insert.no" method="post">
-                    <input type="hidden" name="userNo" value="<%=loginUser.getUserNo() %>">
+                    <input type="hidden" name="userNo" value="<%=MemberUser.getUserNo() %>">
 
                     <table align="center">
                         <tr>

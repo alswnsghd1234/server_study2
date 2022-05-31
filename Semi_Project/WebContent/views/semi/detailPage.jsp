@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList,com.kh.product.model.vo.Product"%>
     <% 
-    
+    ArrayList<Product> pr = (ArrayList<Product>)request.getAttribute("list");
     
     
     %>
@@ -27,18 +27,14 @@
 </head>
 <body>
 <%@include file="/views/common/menubar2.jsp"%>
-
+	
+	
      <!-- 상품 디테일 헤더부분 -->
       <div class="detail-top">
         <!-- 디테일 헤더 왼쪽 -->
         <div id="detail-top-left">
-          <img src="https://contents.lotteon.com/itemimage/_v111222/LO/15/07/45/49/91/_1/50/74/54/99/2/LO1507454991_1507454992_1.jpg/dims/resizef/720X720" alt="" id="main">
-          <div id="sub">
-            <img src="https://contents.lotteon.com/itemimage/_v111222/LO/15/07/45/49/91/_1/50/74/54/99/2/LO1507454991_1507454992_1.jpg/dims/resizef/720X720" alt="">
-            <img src="https://contents.lotteon.com/itemimage/_v111222/LO/15/07/45/49/91/_1/50/74/54/99/2/LO1507454991_1507454992_1.jpg/dims/resizef/720X720" alt="">
-            <img src="https://contents.lotteon.com/itemimage/_v111222/LO/15/07/45/49/91/_1/50/74/54/99/2/LO1507454991_1507454992_1.jpg/dims/resizef/720X720" alt="">
-            <img src="https://contents.lotteon.com/itemimage/_v111222/LO/15/07/45/49/91/_1/50/74/54/99/2/LO1507454991_1507454992_1.jpg/dims/resizef/720X720" alt="">
-          </div>
+          <img src="<%=pr.get(0).getProImage() %>" alt="" id="main">
+
         </div>
         <!-- 디테일 헤더 오른쪽 위-->
         <div id="detail-top-right">
@@ -52,9 +48,7 @@
             <h2 style="text-align: center;">Delivery Info배송정보</h2><br>
             배송 방법 국내 배송 / 입점사 배송 / 로젠택배<br>
             Price Info가격정보 <br>
-            당산스포츠 판매가 228,000원<br>
-            당산스포츠 회원가 198,360 ~ 228,000원<br>
-            당산스포츠 적립금 최대 9,120원
+            당산스포츠 판매가 228,000원<br><br>
           </pre>
           <!-- 디테일 헤더 오른쪽 아래-->
           <div id="detail-top-right-bottom">
@@ -64,7 +58,7 @@
             <div class="order2"><button id="order22">장바구니</button></div>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               
-              <h3 style="display: inline-block;" id="total">상품 총금액 : 20,000원</h3>
+              <h3 style="display: inline-block;" id="total">상품 총금액 : <%=pr.get(0).getProPrice() %></h3>
             </div>
           </div>
         </div>
@@ -72,10 +66,9 @@
 
       <div class="detail-middle">
         <div id="detail-button">
-          <button id="description" onclick="">상품설명</button>
-          <button id="content">상품내용</button>
-          <button id="reviews">상품리뷰</button>
-          <button id="question">상품문의</button>
+          <button id="content"><%=pr.get(0).getProDes() %></button>
+          <button id="reviews"></button>
+          <button id="question"> %></button>
         </div>
         <div id="pr-description"></div>
         <div id="pr-content"></div>
