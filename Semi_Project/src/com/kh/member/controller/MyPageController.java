@@ -1,4 +1,4 @@
-package com.kh.notice.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
 
@@ -7,21 +7,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.kh.notice.model.service.NoticeService;
-import com.kh.notice.model.vo.Notice;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class NoticeUpdateFormController
+ * Servlet implementation class MyPageController
  */
-@WebServlet("/updateForm.no")
-public class NoticeUpdateFormController extends HttpServlet {
+@WebServlet("/myPage.me")
+public class MyPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeUpdateFormController() {
+    public MyPageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,13 +28,22 @@ public class NoticeUpdateFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//url로 직접 요청도 가능하기때문에 
+		//로그인 전 요청 시 - 메인페이지
+		//로그인 후 요청시 - 마이페이지 
+		HttpSession session =request.getSession();
 		
-		int noticeNo = Integer.parseInt(request.getParameter("nno"));
-		Notice n = new NoticeService().selectNotice(noticeNo);
-		//글 번호,제목,내용,작성자,작성일
-		request.setAttribute("n", n);
-		request.getRequestDispatcher("views/notice/noticeUpdateForm.jsp").forward(request, response);
+		if(session.getAttribute("loginUser") == null) {
+			session.setAttribute("alertMsg", "로그인 후 이용해주세요.");
+			response.sendRedirect(request.getContextPath());
+		}else {
+			
+			request.getRequestDispatcher("views/member/myPage.jsp").forward(request, response);
+		}
 		
+		
+		
+	
 	}
 
 	/**

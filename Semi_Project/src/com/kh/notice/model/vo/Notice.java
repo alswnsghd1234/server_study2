@@ -4,60 +4,52 @@ import java.sql.Date;
 
 public class Notice {
 	private int noticeNo;			//	NOTICE_NO	NUMBER
-	private int userNo;
 	private String noticeTitle;//	NOTICE_TITLE	VARCHAR2(100 BYTE)
-	private String noticeContent;//	NOTICE_CONTENT	VARCHAR2(4000 BYTE)
-	private String noticeWriter;//	조회시 작성자 이름 / 작성할땐 로그인 회원 번호 
-	private int count;			//	COUNT	NUMBER
+	private String noticeContent;//	NOTICE_CONTENT	VARCHAR2(4000 BYTE) 
 	private Date createDate;//	CREATE_DATE	DATE
+	private int noticeViewNo;
+	private String noticeWriter;
 	private String status;//	STATUS	VARCHAR2(1 BYTE)
+	private int userNo;
 	
 	public Notice() {
 		super();
 	}
-	
-	
 
-	public Notice(int noticeNo, String noticeTitle,String noticeWriter,String noticeContent, int count, Date createDate) {
+	public Notice(int noticeNo, String noticeTitle, String noticeContent, Date createDate, int noticeViewNo,
+			String noticeWriter, String status, int userNo) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
 		this.noticeContent = noticeContent;
-		this.noticeWriter = noticeWriter;
-		this.count = count;
 		this.createDate = createDate;
-	}
-
-
-
-	public Notice(int noticeNo, int userNo, String noticeTitle, String noticeContent, String noticeWriter, int count,
-			Date createDate, String status) {
-		super();
-		this.noticeNo = noticeNo;
-		this.userNo = userNo;
-		this.noticeTitle = noticeTitle;
-		this.noticeContent = noticeContent;
+		this.noticeViewNo = noticeViewNo;
 		this.noticeWriter = noticeWriter;
-		this.count = count;
-		this.createDate = createDate;
 		this.status = status;
+		this.userNo = userNo;
 	}
 	
+	
 
-	public Notice(int noticeNo, String noticeTitle, String noticeContent, String noticeWriter, Date createDate) {
+	public Notice(int noticeNo, String noticeTitle, Date createDate) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
-		this.noticeContent = noticeContent;
-		this.noticeWriter = noticeWriter;
 		this.createDate = createDate;
 	}
-
+	
 	
 
-
-
-
+	public Notice(int noticeNo, String noticeTitle, String noticeContent, Date createDate, String noticeWriter,
+			String status) {
+		super();
+		this.noticeNo = noticeNo; //NOTICE_NO
+		this.noticeTitle = noticeTitle; //NOTICE_TITLE
+		this.noticeContent = noticeContent; // NOTICE_CONTENT
+		this.createDate = createDate; //NOTICE_DATE
+		this.noticeWriter = noticeWriter; //NOTICE_WRITER
+		this.status = status; //NOTICE_STATUS
+	}
 
 	public int getNoticeNo() {
 		return noticeNo;
@@ -65,14 +57,6 @@ public class Notice {
 
 	public void setNoticeNo(int noticeNo) {
 		this.noticeNo = noticeNo;
-	}
-
-	public int getUserNo() {
-		return userNo;
-	}
-
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
 	}
 
 	public String getNoticeTitle() {
@@ -91,28 +75,28 @@ public class Notice {
 		this.noticeContent = noticeContent;
 	}
 
-	public String getNoticeWriter() {
-		return noticeWriter;
-	}
-
-	public void setNoticeWriter(String noticeWriter) {
-		this.noticeWriter = noticeWriter;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
-
 	public Date getCreateDate() {
 		return createDate;
 	}
 
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
+	}
+
+	public int getNoticeViewNo() {
+		return noticeViewNo;
+	}
+
+	public void setNoticeViewNo(int noticeViewNo) {
+		this.noticeViewNo = noticeViewNo;
+	}
+
+	public String getNoticeWriter() {
+		return noticeWriter;
+	}
+
+	public void setNoticeWriter(String noticeWriter) {
+		this.noticeWriter = noticeWriter;
 	}
 
 	public String getStatus() {
@@ -123,12 +107,22 @@ public class Notice {
 		this.status = status;
 	}
 
+	public int getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
+
 	@Override
 	public String toString() {
-		return "Notice [noticeNo=" + noticeNo + ", userNo=" + userNo + ", noticeTitle=" + noticeTitle
-				+ ", noticeContent=" + noticeContent + ", noticeWriter=" + noticeWriter + ", count=" + count
-				+ ", createDate=" + createDate + ", status=" + status + "]";
+		return "Notice [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent
+				+ ", createDate=" + createDate + ", noticeViewNo=" + noticeViewNo + ", noticeWriter=" + noticeWriter
+				+ ", status=" + status + ", userNo=" + userNo + "]";
 	}
+	
+
 
 	
 	

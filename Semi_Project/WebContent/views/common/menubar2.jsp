@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList,com.kh.product.model.vo.Product,com.kh.member.model.vo.MemberUser"%>
 	<% String contextPath = request.getContextPath();
-	//loginUser가 null이면 로그인전
-	//loginUser가 null이 아니면 로그인 후 화면을 보여주면 된다.
-	MemberUser loginUser = (MemberUser)session.getAttribute("loginUser");
-	
-	String alertMsg =(String)session.getAttribute("alertMsg");
-	%>
+    String alertMsg = "";
+	MemberUser loginUser = null;
+	int loginN = -1;
+	int userNo = -1;
+	if(session.getAttribute("loginN")!=null) loginN = (int)session.getAttribute("loginN");
+	if(session.getAttribute("loginUser")!=null) loginUser= (MemberUser)session.getAttribute("loginUser");
+	if(session.getAttribute("alertMsg")!=null) alertMsg = (String)session.getAttribute("alertMsg");
+	ArrayList<Product> pr = (ArrayList<Product>)request.getAttribute("list");
+  	if(session.getAttribute("userNo")!=null) userNo = (int)session.getAttribute("userNo");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +31,92 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+	<script>
+		var date="";
+		var alertMsg = '<%=alertMsg%>'
+		
+		<%if(session.getAttribute("banDate")!=null){%>
+			date = '<%=session.getAttribute("banDate")%>';
+		<%}%>
+		if(<%=loginN%>==0) {
+			window.alert("로그인 정보가 일치하지 않습니다");
+			<%session.setAttribute("loginN", -1);%>
+		}
+		if(<%=loginN%>==1) {
+			window.alert("정상적으로 로그아웃 되었습니다.");
+			<%session.setAttribute("loginN", -1);%>
+		}
+		if(<%=loginN%>==2) {
+			if(window.confirm("이미 탈퇴한 회원입니다. 탈퇴 취소 처리 하시겠습니까?")){
+				$.ajax({
+					url : "/Semi/ajaxReturnMember.lo",
+					data : {userNo : <%=userNo%>},
+					success : function(result){
+						if(result>0) {
+						window.
+						alert("정상적으로 탈퇴 취소 처리 되었습니다. 재로그인 해주세요");
+						window.location.reload(true);
+						}
+					},
+					error : function(){
+						
+					}
+				});				
+			}
+			<%if(session.getAttribute("userNo")!=null) request.getSession().removeAttribute("userNo");%>
+			<%session.setAttribute("loginN", -1);%>
+		}
+		if(<%=loginN%>==3) {
+			window.alert("회원님은"+date +"까지 정지 상태입니다.");
+			<%session.setAttribute("loginN", -1);%>
+		}
+		if(<%=loginN%>==4) {
+			if(window.confirm("회원님은 현재 휴면 상태입니다. 휴면해제 처리 하시겠습니까? ")){
+				$.ajax({
+					url : "/Semi/ajaxReturnMember.lo",
+					data : {userNo : <%=userNo%>},
+					success : function(result){
+						if(result>0) {
+						window.alert("정상적으로 해제 처리 되었습니다. 재로그인 해주세요");
+						window.location.reload(true);
+						}
+					},
+					error : function(){
+						
+					}
+				});
+			}
+			<%if(session.getAttribute("userNo")!=null) request.getSession().removeAttribute("userNo");%>
+			<%session.setAttribute("loginN", -1);%>
+		}
+		if(<%=loginN%>==5) {
+			window.alert("회원님은 영구정지 상태입니다.");
+			<%session.setAttribute("loginN", -1);%>
+		}
+		if(<%=loginN%>==10) {
+			window.alert("회원가입이 성공적으로 완료되었습니다.");
+			<%session.setAttribute("loginN", -1);%>
+		}
+		if(<%=loginN%>==100) {
+			window.alert("주문이 완료되었습니다.");
+			<%session.setAttribute("loginN", -1);%>
+		}
+		if(<%=loginN%>==110) {
+			window.alert("로그인이 필요한 서비스입니다. 로그인 후 이용해주세요");
+			<%session.setAttribute("loginN", -1);%>
+		}
+		if(alertMsg != ""){
+			window.alert(alertMsg);
+			<%session.removeAttribute("alertMsg");%>
+		}
+		//밴, 휴면 자동
+		$(document).ready(function(){
+			$.ajax({
+				url : "/Semi/ajaxMemberManage.lo"
+			});
+		})
+
+	</script>
 	<!-- HEADER -->
   <header>
   

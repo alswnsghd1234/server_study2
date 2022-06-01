@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList,com.kh.product.model.vo.Product"%>
     <% 
-    ArrayList<Product> pr = (ArrayList<Product>)request.getAttribute("list");
+    
     
     
     %>
@@ -26,7 +26,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<%@include file="/views/common/menubar2.jsp"%>
+<%@include file="/views/common/menubar.jsp"%>
 	
 	
      <!-- 상품 디테일 헤더부분 -->
@@ -34,7 +34,6 @@
         <!-- 디테일 헤더 왼쪽 -->
         <div id="detail-top-left">
           <img src="<%=pr.get(0).getProImage() %>" alt="" id="main">
-
         </div>
         <!-- 디테일 헤더 오른쪽 위-->
         <div id="detail-top-right">
@@ -58,7 +57,7 @@
             <div class="order2"><button id="order22">장바구니</button></div>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               
-              <h3 style="display: inline-block;" id="total">상품 총금액 : <%=pr.get(0).getProPrice() %></h3>
+              <h3 style="display: inline-block;" id="total">상품 총금액 : <%=pr.get(0).getProPrice() %> 원</h3>
             </div>
           </div>
         </div>
@@ -66,19 +65,18 @@
 
       <div class="detail-middle">
         <div id="detail-button">
-          <button id="content"><%=pr.get(0).getProDes() %></button>
-          <button id="reviews"></button>
-          <button id="question"> %></button>
+          <button id="content"><h3>상품설명</h3></button>
+          <button id="reviews"><h3>리뷰</h3></button>
+          <button id="question"><h3>상품문의</h3></button>
         </div>
-        <div id="pr-description"></div>
-        <div id="pr-content"></div>
+        <div id="pr-description"><img src="<%=pr.get(0).getProDes() %>" alt=""></div>
         <div id="pr-reviews">
           <div class="review-score">
             <h3 style="display: inline-block;">사용자 리뷰 총 평점수&nbsp;&nbsp; ★★★★☆ &nbsp;&nbsp;4.7</h3>
           </div>
           <div id="stars-view">
           
-            <h4>별점 개수별로 조회</h2>
+            <h4>별점 개수별로 조회</h4>
             <select name="star" id="star">
               <option value="5">★★★★★</option>
               <option value="4">★★★★☆</option>
@@ -92,12 +90,12 @@
       </div>
 
       <script>
-        $('#content').click(function(){
-          let divv = document.getElementsByTagName("div");
-          for(let i=0;i<=divv.length;i++){
-            divv[i].style.backgroundColor="red";
-            divv[i].innerHTML="하이<br>루";
-          }
+
+        $('#buy').click(function(){
+          location.href = <%=contextPath%>/purchase.pr?pc=<%=pr.get(0).getProNo()%>
+        });
+        $('#order22').click(function(){
+          location.href = <%=contextPath%>/order.pr?pc=<%=pr.get(0).getProNo()%>
         });
       </script>
 </body>

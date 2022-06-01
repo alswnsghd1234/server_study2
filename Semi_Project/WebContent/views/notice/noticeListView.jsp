@@ -34,11 +34,11 @@
 
 </head>
 <body>
-    <%@include file="/views/common/menubar2.jsp"%>
+    <%@include file="/views/common/menubar.jsp"%>
     
     <div class="container">
   <h2 style="text-align: center">공지사항</h2>         
-  <table class="table table-dark table-hover">
+  <table class="big-noticer">
   	<thead>
           <%if(list.isEmpty()){%>
 	      		<tr>
@@ -48,7 +48,8 @@
           
           <%for(Notice n : list) {%>
       <tr>
-        <th><%=n.getNoticeTitle() %></th>
+      	<th class="notice1"><%=n.getNoticeNo()%></th>
+        <th class="notice1"><%=n.getNoticeTitle() %></th>
       </tr>
       
       <%} %>
@@ -60,43 +61,20 @@
   
         
         <br>
-        <!-- 로그인이 안되어있는 상태일때 getUserId를 먼저해버리면 nullpointerException뜸  
-        	그래서 null인지 아닌지 먼저 비교후 아이디 admin 비교 해야함 -->
-<%--          <%if(loginUser!=null && loginUser.getUserId().equals("admin")) {%> --%>
-<!--         <div id="writeBtn"  align="center" > -->
-<!--             <button class="btn btn-info" onclick="location.href="">글작성</button>  -->
-<%--             <a href="<%=contextPath %>/enrollForm.no" class="btn btn-info">글작성</a> --%>
-<!--         </div> -->
-<%--         <%} %> --%>
+    <script>
+        $(function(){
 
+            $(".notice1").click(function(){
+                // console.log("클릭");
+                //클릭했을때 해당하는 글의 번호를 넘겨줘야 해당 글의 정보를 알수있음(식별자)
+                //해당 tr에 자손 td에 있는 text를 알고싶다
+                var nno = $(this).siblings().eq(0).text(); //공지사항글 번호
+                console.log(nno);
 
-<!--     <script> -->
-<!-- //         $(function(){ -->
-
-<!-- //             $(".table-hover>tbody>tr").click(function(){ -->
-<!-- //                 // console.log("클릭"); -->
-<!-- //                 //클릭했을때 해당하는 글의 번호를 넘겨줘야 해당 글의 정보를 알수있음(식별자) -->
-<!-- //                 //해당 tr에 자손 td에 있는 text를 알고싶다 -->
-<!-- //                 var nno = $(this).children().eq(0).text(); //공지사항글 번호 -->
-<!-- //                 // console.log(nno); -->
-<!-- //                 //요청할 url?키=벨류&키=벨류 .... -->
-<!-- //                 //물음표 뒤에 오는 내용을 쿼리스트링이라고 한다. ->직접 만들어서 넘겨야함 -->
-
-<!-- //                 // /JSP/detail.no?nno=글번호 -->
-<%-- <%--                 location.href='<%=contextPath%>/detail.no?nno='+nno; --%> --%>
-                
-
-<!-- //             }); -->
-
-
-
-
-<!-- //         }); -->
-
-
-<!--     </script> -->
-
-
+                location.href='<%=contextPath%>/detail.no?nno='+nno;
+            });
+            });
+    </script>
 
 </body>
 </html>

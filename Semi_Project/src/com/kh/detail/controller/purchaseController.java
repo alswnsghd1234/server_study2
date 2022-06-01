@@ -1,6 +1,7 @@
-package com.kh.notice.controller;
+package com.kh.detail.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.notice.model.service.NoticeService;
+import com.kh.detail.model.service.detailService;
+import com.kh.product.model.vo.Product;
 
 /**
- * Servlet implementation class NoticeDeleteController
+ * Servlet implementation class purchaseController
  */
-@WebServlet("/delete.no")
-public class NoticeDeleteController extends HttpServlet {
+@WebServlet("/purchase.pr")
+public class purchaseController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeDeleteController() {
+    public purchaseController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,19 +31,19 @@ public class NoticeDeleteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int noticeNo = Integer.parseInt(request.getParameter("nno"));
 		
-		int result = new NoticeService().deleteNotice(noticeNo);
+		int pc = Integer.parseInt(request.getParameter("pc"));
 		
-		if(result>0) { //성공시 
-			request.getSession().setAttribute("alertMsg", "공지사항 삭제 성공");
-			
-			response.sendRedirect(request.getContextPath()+"/list.no");
-			
-		}else {//실패
-			request.setAttribute("errorMsg", "공지사항 삭제 실패");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-		}
+		ArrayList<Product> list = new detailService().detailselect(pc);
+		
+		request.setAttribute("list", list);
+		
+		
+		System.out.println(list);
+		request.getRequestDispatcher("/views/semi/detailPage.jsp").forward(request, response);
+	
+	
+	
 	
 	}
 

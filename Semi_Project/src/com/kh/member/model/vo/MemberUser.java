@@ -40,6 +40,8 @@ public class MemberUser {
 		this.banDate = banDate;
 	}
 	
+	
+	
 	public MemberUser(int userNo, String userNName, String u_status, Date banDate) {
 		super();
 		this.userNo = userNo;

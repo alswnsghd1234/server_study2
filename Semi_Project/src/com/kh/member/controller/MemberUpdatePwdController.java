@@ -1,4 +1,4 @@
-package com.kh.notice.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
 
@@ -7,21 +7,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.kh.notice.model.service.NoticeService;
-import com.kh.notice.model.vo.Notice;
+import com.kh.member.model.service.MemberService;
+import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class NoticeUpdateController
+ * Servlet implementation class MemberUpdatePwdController
  */
-@WebServlet("/update.no")
-public class NoticeUpdateController extends HttpServlet {
+@WebServlet("/updatePwd.me")
+public class MemberUpdatePwdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeUpdateController() {
+    public MemberUpdatePwdController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,26 +34,27 @@ public class NoticeUpdateController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		int noticeNo = Integer.parseInt(request.getParameter("nno"));
-		String noticeTitle = request.getParameter("title");
-		String noticeContent = request.getParameter("content");
-	
-		Notice n = new Notice();
+		String userId = request.getParameter("userId");
+		String userPwd = request.getParameter("userPwd");
+		String updatePwd = request.getParameter("updatePwd");
 		
-		n.setNoticeNo(noticeNo);
-		n.setNoticeTitle(noticeTitle);
-		n.setNoticeContent(noticeContent);
 		
-		int result = new NoticeService().updateNotice(n);
 		
-		if(result>0) {
-			request.getSession().setAttribute("alertMsg", "공지사항 수정 완료");
-			response.sendRedirect(request.getContextPath()+"/detail.no?nno="+noticeNo);
+		Member updateMem = new MemberService().updatePwdMember(userId,userPwd,updatePwd);
+		
+		HttpSession session = request.getSession();
+		
+		if(updateMem == null) {
+			
+			session.setAttribute("alertMsg", "비밀번호 변경 실패");
 			
 		}else {
-			request.setAttribute("errorMsg", "공지사항 수정 실패");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			session.setAttribute("alertMsg", "비밀번호가 변경되었습니다.");
+			session.setAttribute("loginUser", updateMem);
 		}
+
+		response.sendRedirect(request.getContextPath()+"/myPage.me");
+	
 	
 	}
 

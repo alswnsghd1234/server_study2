@@ -1,23 +1,26 @@
-package com.kh.notice.controller;
+package com.kh.member_2.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.member_2.model.service.MemberUserService;
+
 /**
- * Servlet implementation class NoticeEnrollFormController
+ * Servlet implementation class ajaxBanManageController
  */
-@WebServlet("/enrollForm.no")
-public class NoticeEnrollFormController extends HttpServlet {
+@WebServlet("/ajaxMemberManage.lo")
+public class ajaxBanManageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeEnrollFormController() {
+    public ajaxBanManageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,9 +29,8 @@ public class NoticeEnrollFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		request.getRequestDispatcher("views/notice/noticeEnrollForm.jsp").forward(request, response);
-	
+		new MemberUserService().banManage();
+		new MemberUserService().dormancyManage();
 	}
 
 	/**

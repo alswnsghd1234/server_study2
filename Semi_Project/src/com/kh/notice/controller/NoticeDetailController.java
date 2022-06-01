@@ -1,6 +1,7 @@
 package com.kh.notice.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,13 +35,14 @@ public class NoticeDetailController extends HttpServlet {
 		int noticeNo=Integer.parseInt(request.getParameter("nno"));
 		
 		//조회수 증가용 서비스
-		int result = new NoticeService().increaseCount(noticeNo);
 		
-		if(result>0) {//성공시
+		
+		if(noticeNo!=0) {//성공시
 			//해당 공지사항 상세조회
-			Notice n = new NoticeService().selectNotice(noticeNo);
+			ArrayList<Notice> n = new NoticeService().selectNotice(noticeNo);
 			request.setAttribute("notice", n);
-			request.getRequestDispatcher("views/notice/noticeDetailView.jsp").forward(request, response);
+			System.out.println(n);
+			request.getRequestDispatcher("views/notice/noticeDetailViews.jsp").forward(request, response);
 		}else {//실패시
 			//에러페이지로 보내버리기
 			request.setAttribute("errorMsg","공지사항 조회 실패");

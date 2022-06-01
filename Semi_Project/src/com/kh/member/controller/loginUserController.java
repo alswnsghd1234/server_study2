@@ -16,7 +16,7 @@ import com.kh.member.model.service.MemberUserService;
 /**
  * Servlet implementation class loginUserController
  */
-@WebServlet("/loginUser.lo")
+@WebServlet("/llllloginUser.li")
 public class loginUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

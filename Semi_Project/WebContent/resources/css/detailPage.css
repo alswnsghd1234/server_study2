@@ -65,7 +65,6 @@ header .order #favor a .material-symbols-outlined{
 .detail-top #detail-top-left #main{
   display: block;
   height: 80%;
-  
   margin: auto;
 }
 .detail-top #detail-top-left #sub {
@@ -158,22 +157,25 @@ header .order #favor a .material-symbols-outlined{
 }
 
 .detail-top #detail-top-right-bottom #total{
-  font-weight: 1000;
+  font-style: italic;
   
   
 
 }
 .detail-middle #detail-button{
-  width: 80%;
+  width: 70%;
+  height: 200px;
   margin: auto;
+  top:150px;
+  position: relative;
+  left: 260px;
 }
 .detail-middle #detail-button>button{
   display: inline-block;
-  width: 200px;
-  height: 40px;
-  margin-right: 140px;
-  margin-left: 20px;
-  margin-top: 100px;
+  width: 180px;
+  height: 80px;
+  margin: 0 40px;
+  
   font-size: 20px;
   border-radius: 5%;
   cursor: pointer;
@@ -182,16 +184,26 @@ header .order #favor a .material-symbols-outlined{
 .detail-middle #detail-button>button:hover{
   color: brown;
 }
-.detail-middle #pr-description,#pr-content,#pr-reviews,#pr-question{
-  margin-top: 50px ;
-  margin-left: auto;
-  margin-right: auto;
+.detail-middle #pr-content,#pr-reviews,#pr-question{
   
-  width: 80%;
-  height: 300px;
+
+  
+  width: 300px;
+  height: 200px;
   background-color: antiquewhite;
   border: solid 1px black;
   
+}
+.detail-middle #pr-description{
+  margin-top: 50px ;
+  margin-left: auto;
+  margin-right: auto;
+  width: 780px;
+  height: 6980px;
+}
+.detail-middle #pr-description>img{
+  width: 100%;
+  height: 100%;
 }
 .detail-middle #pr-reviews .review-score{
   margin-right: 100px;
@@ -214,4 +226,9 @@ header .order #favor a .material-symbols-outlined{
   position: relative;
   top: 0;
   right: 0;
+}
+#detail-top-right-bottom h3{
+ width: 400px;
+ height: 80px;
+ font-size: 30px;
 }
