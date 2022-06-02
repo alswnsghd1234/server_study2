@@ -39,9 +39,9 @@
         <div id="notice">
           <h4>공지사항</h4>
             <div id="content">
-              <li><a href="<%=contextPath %>/list.no"><h5>공지제목1</h5></a></li>
-              <li><a href="<%=contextPath %>/list.no"><h5>공지제목2</h5></a></li>
-              <li><a href="<%=contextPath %>/list.no"><h5>공지제목3</h5></a></li>
+              <li><a href="<%=contextPath %>/list.no?cpage=1"><h5>공지</h5></a></li>
+              <li><a href="<%=contextPath %>/list.no?cpage=1"><h5>공지</h5></a></li>
+              <li><a href="<%=contextPath %>/list.no?cpage=1"><h5>공지</h5></a></li>
             </div>
         </div>
       </div>
@@ -66,7 +66,7 @@
       <!-- 인기 헬스장 여기까지-->
       <div id="footer">
         <div id="footer_1">
-            <a href="#">이용약관</a> |
+            <a href="#" disable>이용약관</a> |
             <a href="#">개인정보취급방침</a> |
             <a href="#">인재채용</a> |
             <a href="#">고객센터</a>
@@ -83,12 +83,9 @@
         </div>
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollToPlugin.min.js" integrity="sha512-nTHzMQK7lwWt8nL4KF6DhwLHluv6dVq/hNnj2PBN0xMl2KaMm1PM02csx57mmToPAodHmPsipoERRNn4pG7f+Q==" crossorigin="anonymous"></script>
 <script>
-  gsap.to(window, .7, {
-    scrollTo: 5
-  });
+
+	
 </script>
 </body>
 </html>

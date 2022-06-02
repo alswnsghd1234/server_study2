@@ -12,11 +12,11 @@ import com.kh.product.model.vo.Product;
 public class detailService {
 
 
-	public ArrayList<Product> detailselect(int dt) {
+	public ArrayList<Product> detailselect(int pc) {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Product> list = new detailDao().detailselect(conn,dt);
+		ArrayList<Product> list = new detailDao().detailselect(conn,pc);
 		
 		close(conn);
 		

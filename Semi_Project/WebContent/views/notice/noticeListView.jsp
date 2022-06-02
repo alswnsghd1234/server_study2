@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList,com.kh.notice.model.vo.Notice"%>
+    pageEncoding="UTF-8"%>
+<%@ page import="com.kh.common.PageInfo,java.util.ArrayList,com.kh.notice.model.vo.Notice"%>
 <%
+
+	PageInfo pi =(PageInfo)request.getAttribute("pi");
 	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>    
     
     
@@ -27,6 +35,33 @@
    	table{
    	 	text-align:center;
     }
+
+    .notice1{
+      width: 100px;
+      height: 60px;
+      font-size: 13px;
+      border: 1px black solid;
+      border-radius: 5%;
+      background-color: beige;
+    }
+    .notice11{
+      width: 700px;
+      height: 60px;
+      font-size: 13px;
+      border: 1px black solid;
+      border-radius: 5%;
+    }
+    .notice1:hover{
+      cursor: pointer;
+    }
+    .big-noticer{
+      position: relative;
+      left: 140px;
+      
+    }
+    .container>h2{
+      margin: 100px 0px;
+    }
    
 
 </style>
@@ -37,7 +72,7 @@
     <%@include file="/views/common/menubar.jsp"%>
     
     <div class="container">
-  <h2 style="text-align: center">공지사항</h2>         
+  <h2 style="text-align: center"><b>공지사항</b></h2>         
   <table class="big-noticer">
   	<thead>
           <%if(list.isEmpty()){%>
@@ -49,32 +84,59 @@
           <%for(Notice n : list) {%>
       <tr>
       	<th class="notice1"><%=n.getNoticeNo()%></th>
-        <th class="notice1"><%=n.getNoticeTitle() %></th>
+        <th class="notice11"><%=n.getNoticeTitle() %></th>
       </tr>
       
       <%} %>
       <%} %>
     </thead>
   </table>
+  
 </div>
+
+   <script>
+        $(function(){
+
+            $(".notice1").click(function(){
+              // console.log("클릭");
+              //클릭했을때 해당하는 글의 번호를 넘겨줘야 해당 글의 정보를 알수있음(식별자)
+              //해당 tr에 자손 td에 있는 text를 알고싶다
+              var nno = $(this).text(); //공지사항글 번호
+              console.log(nno);
+
+              location.href='<%=contextPath%>/detail.no?nno='+nno;
+          });
+            });
+    </script>
+  
+     <br><br><br>
+     
+     
+          <div class="paging-area" align="center">
+       		<%if(currentPage!=1){ %>
+            <button onclick="location.href='<%=contextPath%>/list.no?cpage=<%=currentPage-1%>'">&lt;</button>
+            <%} %>
+            
+            <%for(int i =startPage; i<=endPage; i++){ %>
+	 			<%if(i!=currentPage){ %>
+	            	<button onclick="location.href='<%=contextPath%>/list.no?cpage=<%=i%>'"><%=i %></button>
+                    <%}else{ %>
+				  	<button disabled><%=i %></button>         
+	            <%} %>
+            <%} %>
+            
+            <%if(currentPage!=maxPage){ %>
+            <button onclick="location.href='<%=contextPath%>/list.no?cpage=<%=currentPage+1%>'">&gt;</button>
+       		<%} %>
+       
+        </div>
+
+
 
   
         
         <br>
-    <script>
-        $(function(){
-
-            $(".notice1").click(function(){
-                // console.log("클릭");
-                //클릭했을때 해당하는 글의 번호를 넘겨줘야 해당 글의 정보를 알수있음(식별자)
-                //해당 tr에 자손 td에 있는 text를 알고싶다
-                var nno = $(this).siblings().eq(0).text(); //공지사항글 번호
-                console.log(nno);
-
-                location.href='<%=contextPath%>/detail.no?nno='+nno;
-            });
-            });
-    </script>
+ 
 
 </body>
 </html>

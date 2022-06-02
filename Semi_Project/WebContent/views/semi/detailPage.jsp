@@ -47,7 +47,7 @@
             <h2 style="text-align: center;">Delivery Info배송정보</h2><br>
             배송 방법 국내 배송 / 입점사 배송 / 로젠택배<br>
             Price Info가격정보 <br>
-            당산스포츠 판매가 228,000원<br><br>
+            당산스포츠 판매가 <%=pr.get(0).getProPrice() %>원<br><br>
           </pre>
           <!-- 디테일 헤더 오른쪽 아래-->
           <div id="detail-top-right-bottom">
@@ -90,13 +90,14 @@
       </div>
 
       <script>
-
-        $('#buy').click(function(){
-          location.href = <%=contextPath%>/purchase.pr?pc=<%=pr.get(0).getProNo()%>
+		$(function(){
+        $("#buy").click(function(){
+          location.href ='<%=contextPath%>/purchase.pr?pc=<%=pr.get(0).getProNo()%>&lo=<%=loginUser.getUserNo()%>&po=1'
         });
-        $('#order22').click(function(){
-          location.href = <%=contextPath%>/order.pr?pc=<%=pr.get(0).getProNo()%>
+        $("#order22").click(function(){
+          location.href = '<%=contextPath%>/userBasket.bk?pc=<%=pr.get(0).getProNo()%>&lo=<%=loginUser.getUserNo()%>&po=1'
         });
+		});
       </script>
 </body>
 </html>

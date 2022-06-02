@@ -33,14 +33,12 @@ public class purchaseController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int pc = Integer.parseInt(request.getParameter("pc"));
-		
-		ArrayList<Product> list = new detailService().detailselect(pc);
-		
-		request.setAttribute("list", list);
+		int pr = Integer.parseInt(request.getParameter("pr"));
+		int lo = Integer.parseInt(request.getParameter("lo"));
 		
 		
-		System.out.println(list);
-		request.getRequestDispatcher("/views/semi/detailPage.jsp").forward(request, response);
+
+		request.getRequestDispatcher("/views/user/basket/userBasket.jsp").forward(request, response);
 	
 	
 	

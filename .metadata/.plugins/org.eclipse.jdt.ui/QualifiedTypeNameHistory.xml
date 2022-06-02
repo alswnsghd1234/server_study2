@@ -4,7 +4,6 @@
 <fullyQualifiedTypeName name="java.sql.Statement"/>
 <fullyQualifiedTypeName name="com.kh.member.model.dao.MemberDao"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-<fullyQualifiedTypeName name="com.kh.member.model.service.MemberService"/>
 <fullyQualifiedTypeName name="com.kh.member.model.vo.Member"/>
 <fullyQualifiedTypeName name="com.kh.board.model.service.NoticeService"/>
 <fullyQualifiedTypeName name="com.kh.board.model.vo.Notice"/>
@@ -29,4 +28,8 @@
 <fullyQualifiedTypeName name="com.kh.product.model.dao.BolingDao"/>
 <fullyQualifiedTypeName name="com.kh.product.model.service.BolingService"/>
 <fullyQualifiedTypeName name="com.kh.product.model.service.Soccer.SoccerService"/>
+<fullyQualifiedTypeName name="com.kh.member.model.service.MemberService"/>
+<fullyQualifiedTypeName name="com.kh.serviceCenter.user.model.dao.BasketDao"/>
+<fullyQualifiedTypeName name="com.kh.user.model.vo.Basket"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
 </qualifiedTypeNameHistroy>

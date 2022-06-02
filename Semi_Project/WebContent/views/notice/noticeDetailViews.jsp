@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList,com.kh.notice.model.vo.Notice,com.kh.member_2.model.vo.MemberUser"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList,com.kh.member_2.model.vo.MemberUser"%>
     <%
     ArrayList<Notice> notice = (ArrayList<Notice>)request.getAttribute("notice");
 
@@ -43,7 +43,7 @@
         <br>
 		
         <div align="center">
-            <a href="<%=contextPath%>/list.no" class="btn btn-success">목록으로 가기</a> <br>
+            <a href="<%=contextPath%>/list.no?cpage=1" class="btn btn-success">목록으로 가기</a> <br>
 			<br>
         </div>
         

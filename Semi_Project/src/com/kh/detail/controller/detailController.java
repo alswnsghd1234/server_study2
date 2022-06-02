@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.detail.model.service.detailService;
-import com.kh.product.model.service.Boling.BolingService;
 import com.kh.product.model.vo.Product;
 
 /**
@@ -40,7 +39,6 @@ public class detailController extends HttpServlet {
 		request.setAttribute("list", list);
 		
 		
-		System.out.println(list);
 		request.getRequestDispatcher("/views/semi/detailPage.jsp").forward(request, response);
 	}
 

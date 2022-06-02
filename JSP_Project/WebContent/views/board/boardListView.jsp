@@ -33,7 +33,7 @@
     </style>
 </head>
 <body>
-    <%@include file="/views/common/menubar.jsp"%>
+    <%@ include file="/views/common/menubar.jsp" %>
 
     <div class="outer">
         <br>

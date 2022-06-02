@@ -1,23 +1,26 @@
-package com.kh.detail.controller;
+package com.kh.serviceCenter.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.serviceCenter.model.service.ScService;
+
 /**
- * Servlet implementation class orderController
+ * Servlet implementation class ajaxHideScController
  */
-@WebServlet("/order.pr")
-public class orderController extends HttpServlet {
+@WebServlet("/ajaxHide.sc")
+public class ajaxHideScController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public orderController() {
+    public ajaxHideScController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,10 +29,13 @@ public class orderController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	
-	
-	
+		int sw = Integer.parseInt(request.getParameter("sw"));
+		String[] arr = request.getParameterValues("fnoArr");
+		int[] fnoArr = new int[arr.length];
+		for(int i=0;i<arr.length;i++) {
+			fnoArr[i] = Integer.parseInt(arr[i]);
+		}
+		new ScService().ajaxHideSc(fnoArr,sw);
 	}
 
 	/**

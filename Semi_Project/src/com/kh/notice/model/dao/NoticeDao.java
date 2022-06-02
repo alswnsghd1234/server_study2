@@ -1,5 +1,6 @@
 package com.kh.notice.model.dao;
-import static com.kh.common.JDBCTemplate.*;
+import static com.kh.common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,8 +10,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.common.PageInfo;
 import com.kh.notice.model.vo.Notice;
-import com.kh.product.model.vo.Product;
 
 public class NoticeDao {
 	
@@ -26,7 +27,7 @@ public class NoticeDao {
 		}
 	}
 
-	public ArrayList<Notice> selectNoticeList(Connection conn) {
+	public ArrayList<Notice> selectNoticeList(Connection conn,PageInfo pi) {
 		
 		//SELECT문 - > ResultSet 객체 (여러 행)
 		ArrayList<Notice> list = new ArrayList<>();
@@ -40,12 +41,17 @@ public class NoticeDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() +1;
+			int endRow = pi.getCurrentPage() * pi.getBoardLimit();
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
 				list.add(new Notice(rset.getInt("NOTICE_NO")
 									,rset.getString("NOTICE_TITLE")
-									,rset.getDate("NOTICE_DATE")
 									));
 			}
 			
@@ -93,5 +99,34 @@ public class NoticeDao {
 			close(pstmt);
 		}
 		return nt;
+	}
+
+	public int NoticeCount(Connection conn) {
+		
+		int listCount = 0; 
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset=null;
+		
+		String sql= prop.getProperty("selectNoticeCount");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT"); //나올 행이 하나뿐이기 때문에 while문이 아닌 if문 사용
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
 	}
 }

@@ -3,10 +3,18 @@
 
 <properties>
 	<entry key="selectNoticeList">
-		SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_DATE
-		FROM NOTICE
-		WHERE NOTICE_STATUS ='Y'
-		ORDER BY NOTICE_DATE DESC
+						SELECT*
+	   		 FROM(
+	       		 SELECT ROWNUM RNUM,A.*
+	       		 FROM
+	        		(
+		            SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_DATE,NOTICE_WRITER,NOTICE_STATUS
+		            FROM NOTICE
+		            WHERE NOTICE_STATUS='Y'
+		            ORDER BY NOTICE_DATE DESC
+	            	) A
+	        	)	
+		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 
 	
@@ -16,9 +24,13 @@
 		WHERE NOTICE_STATUS ='Y'
 		AND NOTICE_NO = ?
 		ORDER BY NOTICE_DATE DESC
+	</entry>
 	
-	
-	
+	<entry key="selectNoticeCount">
+		SELECT COUNT(NOTICE_NO) COUNT
+		FROM NOTICE
+	  WHERE NOTICE_STATUS ='Y'
+	  ORDER BY NOTICE_DATE DESC
 	</entry>
 
 	

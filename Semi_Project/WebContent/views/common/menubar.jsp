@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList,com.kh.product.model.vo.Product,com.kh.member_2.model.vo.MemberUser"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList,com.kh.notice.model.vo.Notice,com.kh.product.model.vo.Product,com.kh.member_2.model.vo.MemberUser,com.kh.detail.model.vo.Basket"%>
 	<% String contextPath = request.getContextPath();
     String alertMsg = "";
 	MemberUser loginUser = null;
@@ -10,6 +10,8 @@
 	if(session.getAttribute("alertMsg")!=null) alertMsg = (String)session.getAttribute("alertMsg");
 	ArrayList<Product> pr = (ArrayList<Product>)request.getAttribute("list");
   	if(session.getAttribute("userNo")!=null) userNo = (int)session.getAttribute("userNo");
+  	
+  	
     %>
 <!DOCTYPE html>
 <html>

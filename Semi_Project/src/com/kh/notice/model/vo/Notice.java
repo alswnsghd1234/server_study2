@@ -51,6 +51,14 @@ public class Notice {
 		this.status = status; //NOTICE_STATUS
 	}
 
+
+
+	public Notice(int noticeNo, String noticeTitle) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeTitle = noticeTitle;
+	}
+
 	public int getNoticeNo() {
 		return noticeNo;
 	}

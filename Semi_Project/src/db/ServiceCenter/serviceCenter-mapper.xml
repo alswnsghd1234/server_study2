@@ -133,6 +133,24 @@
 	ORDER BY QNA_NO DESC) A)
 	WHERE R BETWEEN ? AND ?
 </entry>
+<entry key="insertBasket">
+	INSERT INTO BASKET(
+				BASKET_NO, 
+				USER_NO, 
+				PRO_NO, 
+				PAY_ORDERNO, 
+				BA_STATUS)
+	VALUES(SEQ_BANO.NEXTVAL, ?,?,?,'Y')
+
+
+</entry>
+
+<entry key="userBaskets">
+	SELECT *
+	FROM BASKET
+	WHERE BA_STATUS ='Y'
+	
+	</entry>
 
 
 </properties>

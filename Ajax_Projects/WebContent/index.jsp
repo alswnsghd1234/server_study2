@@ -245,6 +245,38 @@
                 })
             }
         </script>
+        
+        ID : <input type="text" id="userId"> <button id="btn" onclick="tt();">ID 중복확인</button><br>
+        	<span id="msg"></span>
+        
+          <script>
+            
+            function tt(){
+                	
+                	let userId = $("#userId").val();
+                $.ajax({
+                	
+                    url:"m/idCheck.kh",
+                    type : "get",
+                    data : {userId:userId},
+                    success:function(result){
+            			if(result == 0){
+        					$("#msg").html('사용할 수 없는 아이디입니다.');
+        					$("#msg").css('color','red');
+        				} else{
+        					$("#msg").html('사용할 수 있는 아이디입니다.');
+        					$("#msg").css('color','blue');
+        				} 
+        			},
+                    error:function(){
+                        console.log("ajax 통신 문제 발생");
+                    }
+                })
+            }
+        </script>
+        
+        <script src = "js/jquery-3.6.0.min.js"></script>
+
 
 
 

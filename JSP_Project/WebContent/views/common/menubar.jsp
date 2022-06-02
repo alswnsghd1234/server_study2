@@ -5,7 +5,7 @@
 	String contextPath = request.getContextPath();
 	//loginUser가 null이면 로그인전
 	//loginUser가 null이 아니면 로그인 후 화면을 보여주면 된다.
-	PageInfo pi =(PageInfo)request.getAttribute("pi");
+	
 	
 	String alertMsg =(String)session.getAttribute("alertMsg");
 	boolean isAdmin = loginUser !=null && loginUser.getUserId().equals("admin");

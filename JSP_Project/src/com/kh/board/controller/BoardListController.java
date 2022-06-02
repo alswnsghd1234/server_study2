@@ -47,6 +47,7 @@ public class BoardListController extends HttpServlet {
 		listCount = new BoardService().selectListCount(); 
 		//currentPage 현재 페이지(사용자가 요청한 페이지)
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
+		System.out.println(currentPage);
 		//pageLimit 페이지 하단에 보이는 페이지 페이징 최대 개수
 		pageLimit = 10;
 		//boardLimit 한 페이지에서 보여질 게시글 개수

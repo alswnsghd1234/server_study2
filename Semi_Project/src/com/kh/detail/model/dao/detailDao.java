@@ -27,7 +27,7 @@ public class detailDao {
 		}
 	}
 
-	public ArrayList<Product> detailselect(Connection conn, int dt) {
+	public ArrayList<Product> detailselect(Connection conn, int pc) {
 		//SELECT문 - > ResultSet 객체 (여러 행)
 		ArrayList<Product> list = new ArrayList<>();
 		
@@ -37,10 +37,10 @@ public class detailDao {
 		
 		
 		String sql = prop.getProperty("detailselect");
-		
+		System.out.println(pc);
 		try {
 			pstmt = conn.prepareStatement(sql);			
-			pstmt.setInt(1, dt);
+			pstmt.setInt(1, pc);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
