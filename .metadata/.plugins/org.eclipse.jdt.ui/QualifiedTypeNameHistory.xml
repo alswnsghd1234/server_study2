@@ -27,9 +27,9 @@
 <fullyQualifiedTypeName name="com.kh.common.PageInfo"/>
 <fullyQualifiedTypeName name="com.kh.product.model.dao.BolingDao"/>
 <fullyQualifiedTypeName name="com.kh.product.model.service.BolingService"/>
-<fullyQualifiedTypeName name="com.kh.product.model.service.Soccer.SoccerService"/>
 <fullyQualifiedTypeName name="com.kh.member.model.service.MemberService"/>
 <fullyQualifiedTypeName name="com.kh.serviceCenter.user.model.dao.BasketDao"/>
 <fullyQualifiedTypeName name="com.kh.user.model.vo.Basket"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="com.kh.product.model.service.Soccer.SoccerService"/>
 </qualifiedTypeNameHistroy>

@@ -90,6 +90,19 @@ public class Product {
 
 
 
+
+
+
+	public Product(int proNo, String proName,  int proPrice,String proImage) {
+		super();
+		this.proNo = proNo;
+		this.proName = proName;
+		this.proPrice = proPrice;
+		this.proImage = proImage;
+	}
+
+
+
 	public int getProNo() {
 		return proNo;
 	}

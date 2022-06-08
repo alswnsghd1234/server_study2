@@ -94,6 +94,16 @@ public class SoccerService {
 		
 		return listCount;
 	}
+	public ArrayList<Product> SoccerProduct() {
+		Connection conn = getConnection();
+		
+		ArrayList<Product> list = new SoccerDao().SoccermainProduct(conn);
+		System.out.println(list);
+		close(conn);
+		
+		return list;
+	
+	}
 
 
 

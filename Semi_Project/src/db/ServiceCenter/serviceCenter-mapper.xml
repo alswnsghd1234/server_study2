@@ -133,6 +133,8 @@
 	ORDER BY QNA_NO DESC) A)
 	WHERE R BETWEEN ? AND ?
 </entry>
+
+
 <entry key="insertBasket">
 	INSERT INTO BASKET(
 				BASKET_NO, 

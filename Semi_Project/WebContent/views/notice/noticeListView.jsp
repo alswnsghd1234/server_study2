@@ -98,10 +98,7 @@
         $(function(){
 
             $(".notice1").click(function(){
-              // console.log("클릭");
-              //클릭했을때 해당하는 글의 번호를 넘겨줘야 해당 글의 정보를 알수있음(식별자)
-              //해당 tr에 자손 td에 있는 text를 알고싶다
-              var nno = $(this).text(); //공지사항글 번호
+              var nno = $(this).text();
               console.log(nno);
 
               location.href='<%=contextPath%>/detail.no?nno='+nno;

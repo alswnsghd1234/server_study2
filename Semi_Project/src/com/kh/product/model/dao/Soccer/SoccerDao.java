@@ -298,6 +298,39 @@ public int SoccerbtCount(Connection conn) {
 }
 
 
+public ArrayList<Product> SoccermainProduct(Connection conn) {
+
+	ArrayList<Product> list = new ArrayList<>();
+	
+	PreparedStatement pstmt = null;
+	
+	ResultSet rset = null;
+	String sql = prop.getProperty("selectmainsoccer");
+	
+	try {
+		pstmt = conn.prepareStatement(sql);
+
+		
+		rset = pstmt.executeQuery();
+		
+		while(rset.next()) {
+			list.add(new Product(rset.getInt("PRO_NO")
+								,rset.getString("PRO_NAME")
+								,rset.getInt("PRO_PRICE")
+								,rset.getString("PRO_IMAGE")));
+		}
+		System.out.println(list);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}finally {
+		close(rset);
+		close(pstmt);
+	}
+	return list;
+}
+
+
 
 }
 

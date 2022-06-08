@@ -329,4 +329,13 @@
 	  AND SELL_STAT ='Y'
 	  AND PRO_NO = ?
 	</entry>
+	
+		<entry key="selectmainsoccer">
+		SELECT *
+		FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =10
+	  AND CATE_SNO = 11
+	</entry>
 </properties>
